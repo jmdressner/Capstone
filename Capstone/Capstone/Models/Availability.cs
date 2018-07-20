@@ -27,9 +27,13 @@ namespace Capstone.Models
         public int DayID { get; set; }
         public Week Week { get; set; }
 
+        public IEnumerable<Week> Weeks { get; set; }
+
         [ForeignKey("Program")]
         public int ServiceID { get; set; }
         public Program Program { get; set; }
+
+        public IEnumerable<Program> Programs { get; set; }
 
         [ForeignKey("Request")]
         [Display(Name = "Request Off")]

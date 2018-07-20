@@ -31,5 +31,14 @@ namespace Capstone.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Week> Weeks { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Program> Programs { get; set; }
+        public DbSet<Request> Requests { get; set; }
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<Volunteer> Volunteers { get; set; }
+        public DbSet<Availability> Availabilities { get; set; }
+        public DbSet<Student> Students { get; set; }
     }
 }

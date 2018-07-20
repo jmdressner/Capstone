@@ -27,6 +27,8 @@ namespace Capstone.Models
         public int ServiceID { get; set; }
         public Program Program { get; set; }
 
+        public IEnumerable<Program> Programs { get; set; }
+
         [Display(Name = "Brief Biography")]
         public string Bio { get; set; }
     }

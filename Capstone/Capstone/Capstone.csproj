@@ -204,6 +204,10 @@
     <Compile Include="Migrations\201807201534001_initial.Designer.cs">
       <DependentUpon>201807201534001_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807201816587_addingTables.cs" />
+    <Compile Include="Migrations\201807201816587_addingTables.Designer.cs">
+      <DependentUpon>201807201816587_addingTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -301,6 +305,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807201534001_initial.resx">
       <DependentUpon>201807201534001_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807201816587_addingTables.resx">
+      <DependentUpon>201807201816587_addingTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
