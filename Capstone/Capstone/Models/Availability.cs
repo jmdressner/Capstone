@@ -30,6 +30,7 @@ namespace Capstone.Models
         public IEnumerable<Week> Weeks { get; set; }
 
         [ForeignKey("Program")]
+        [Display(Name = "Service")]
         public int ServiceID { get; set; }
         public Program Program { get; set; }
 

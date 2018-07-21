@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Capstone.Models.Availability>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AdminID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VolunteerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DayID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RequestID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VolunteerStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdminID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VolunteerID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DayID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RequestID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VolunteerStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

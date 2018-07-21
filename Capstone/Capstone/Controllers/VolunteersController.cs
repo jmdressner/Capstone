@@ -49,7 +49,7 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Email,Phone,Address,City,State,Zipcode,ApplicationUserId")] Volunteer volunteer)
+        public ActionResult Create([Bind(Include = "Id,Name,Email,Phone,Address,Zipcode,Church,BackgroundCheckStatus,ApplicationUserId")] Volunteer volunteer)
         {
             var currentUserId = User.Identity.GetUserId();
             volunteer.ApplicationUserID = currentUserId;
@@ -84,7 +84,7 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Email,Phone,Address,City,State,Zipcode,ApplicationUserId")] Volunteer volunteer)
+        public ActionResult Edit([Bind(Include = "Id,Name,Email,Phone,Address,Zipcode,Church,BackgroundCheckStatus,ApplicationUserId")] Volunteer volunteer)
         {
             if (ModelState.IsValid)
             {

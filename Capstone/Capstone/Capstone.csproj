@@ -196,23 +196,21 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminsController.cs" />
+    <Compile Include="Controllers\AvailabilitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\VolunteersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807201534001_initial.cs" />
-    <Compile Include="Migrations\201807201534001_initial.Designer.cs">
-      <DependentUpon>201807201534001_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807201816587_addingTables.cs" />
-    <Compile Include="Migrations\201807201816587_addingTables.Designer.cs">
-      <DependentUpon>201807201816587_addingTables.cs</DependentUpon>
+    <Compile Include="Migrations\201807211807241_initial.cs" />
+    <Compile Include="Migrations\201807211807241_initial.Designer.cs">
+      <DependentUpon>201807211807241_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\Agency.cs" />
     <Compile Include="Models\Availability.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -292,11 +290,16 @@
     <Content Include="Views\Admins\Details.cshtml" />
     <Content Include="Views\Admins\Edit.cshtml" />
     <Content Include="Views\Admins\Delete.cshtml" />
-    <Content Include="Views\Volunteers\Index.cshtml" />
-    <Content Include="Views\Volunteers\Details.cshtml" />
-    <Content Include="Views\Volunteers\Edit.cshtml" />
+    <Content Include="Views\Availabilities\Create.cshtml" />
+    <Content Include="Views\Availabilities\Edit.cshtml" />
+    <Content Include="Views\Availabilities\Details.cshtml" />
+    <Content Include="Views\Availabilities\Delete.cshtml" />
+    <Content Include="Views\Availabilities\Index.cshtml" />
     <Content Include="Views\Volunteers\Create.cshtml" />
+    <Content Include="Views\Volunteers\Details.cshtml" />
     <Content Include="Views\Volunteers\Delete.cshtml" />
+    <Content Include="Views\Volunteers\Edit.cshtml" />
+    <Content Include="Views\Volunteers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -315,11 +318,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807201534001_initial.resx">
-      <DependentUpon>201807201534001_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807201816587_addingTables.resx">
-      <DependentUpon>201807201816587_addingTables.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807211807241_initial.resx">
+      <DependentUpon>201807211807241_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

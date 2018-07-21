@@ -4,10 +4,10 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Profile</h2>
+<h2>Details</h2>
 
 <div>
-    <br />
+    <h4>Volunteer</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -43,22 +43,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.State)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.State)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Zipcode)
         </dt>
 
@@ -66,17 +50,33 @@
             @Html.DisplayFor(model => model.Zipcode)
         </dd>
 
-        @*<dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Church)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Church)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BackgroundCheckStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BackgroundCheckStatus)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.ApplicationUserID)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ApplicationUserID)
-        </dd>*@
+        </dd>
 
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @*@Html.ActionLink("Back to List", "Index")*@
+    @Html.ActionLink("Back to List", "Index")
 </p>

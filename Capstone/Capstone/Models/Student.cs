@@ -16,11 +16,21 @@ namespace Capstone.Models
         [Display(Name = "Phone Number")]
         public string Phone { get; set; }
         public string Address { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
         public string Zipcode { get; set; }
         [Display(Name = "Country of Origin")]
         public string Country { get; set; }
+        [Display(Name = "Date of Arrival")]
+        public DateTime DateOfArrival { get; set; }
+
+        [ForeignKey("Agency")]
+        [Display(Name = "Settlement Agency")]
+        public int AgencyID { get; set; }
+        public Agency Agency { get; set; }
+
+        public IEnumerable<Agency> Agencies { get; set; }
+
+        [Display(Name = "Date of Registration")]
+        public DateTime DateOfRegistration { get; set; }
 
         [ForeignKey("Program")]
         [Display(Name = "Services used")]

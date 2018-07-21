@@ -39,6 +39,7 @@ namespace Capstone.Models
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Volunteer> Volunteers { get; set; }
         public DbSet<Availability> Availabilities { get; set; }
+        public DbSet<Agency> Agencies { get; set; }
         public DbSet<Student> Students { get; set; }
     }
 }

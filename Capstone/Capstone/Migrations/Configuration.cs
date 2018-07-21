@@ -46,6 +46,15 @@ namespace Capstone.Migrations
                     new Models.Program { Service = "Sewing Classes" },
                     new Models.Program { Service = "Immigration Services" }
                 );
+
+            context.Agencies.AddOrUpdate(
+                a => a.Settlement,
+                    new Models.Agency { Settlement = "L.S.S." },
+                    new Models.Agency { Settlement = "I.I.W" },
+                    new Models.Agency { Settlement = "Catholic Charities"},
+                    new Models.Agency { Settlement = "Asylum" },
+                    new Models.Agency { Settlement = "N/A" }
+                );
         }
     }
 }
