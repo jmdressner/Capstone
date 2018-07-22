@@ -21,7 +21,7 @@ namespace Capstone.Controllers
             return View(db.Volunteers.ToList());
         }
 
-        // GET: Employees/Details/5
+        // GET: Volunteers/Details/5
         public ActionResult Details(int? id)
         {
             var currentUserId = User.Identity.GetUserId();
@@ -38,13 +38,13 @@ namespace Capstone.Controllers
             return View(volunteer);
         }
 
-        // GET: Employees/Create
+        // GET: Volunteers/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Employees/Create
+        // POST: Volunteers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -64,7 +64,7 @@ namespace Capstone.Controllers
             return View(volunteer);
         }
 
-        // GET: Employees/Edit/5
+        // GET: Volunteers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,7 +79,7 @@ namespace Capstone.Controllers
             return View(volunteer);
         }
 
-        // POST: Employees/Edit/5
+        // POST: Volunteers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -95,7 +95,7 @@ namespace Capstone.Controllers
             return View(volunteer);
         }
 
-        // GET: Employees/Delete/5
+        // GET: Volunteers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -110,7 +110,7 @@ namespace Capstone.Controllers
             return View(volunteer);
         }
 
-        // POST: Employees/Delete/5
+        // POST: Volunteers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

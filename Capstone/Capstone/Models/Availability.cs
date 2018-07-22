@@ -36,11 +36,6 @@ namespace Capstone.Models
 
         public IEnumerable<Program> Programs { get; set; }
 
-        [ForeignKey("Request")]
-        [Display(Name = "Request Off")]
-        public int RequestID { get; set; }
-        public Request Request { get; set; }
-
         [Display(Name = "Volunteer Status")]
         public bool VolunteerStatus { get; set; }
 

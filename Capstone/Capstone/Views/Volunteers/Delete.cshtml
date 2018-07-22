@@ -8,7 +8,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Volunteer</h4>
+    <br />
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -67,13 +67,13 @@
             @Html.DisplayFor(model => model.BackgroundCheckStatus)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.ApplicationUserID)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ApplicationUserID)
-        </dd>
+        </dd>*@
 
     </dl>
 
@@ -82,7 +82,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Back to List", "Index", "Home")
         </div>
     }
 </div>

@@ -11,50 +11,44 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AdminID)
+        @*<th>
+            @Html.DisplayNameFor(model => model.Admin.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.VolunteerID)
+            @Html.DisplayNameFor(model => model.Volunteer.Name)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Week.Day)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DayID)
+            @Html.DisplayNameFor(model => model.Program.Service)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ServiceID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RequestID)
-        </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.VolunteerStatus)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AdminID)
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Admin.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.VolunteerID)
+            @Html.DisplayFor(modelItem => item.Volunteer.Name)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Week.Day)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DayID)
+            @Html.DisplayFor(modelItem => item.Program.Service)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ServiceID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RequestID)
-        </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.VolunteerStatus)
-        </td>
+        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>

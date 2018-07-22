@@ -28,36 +28,28 @@
         </dd>*@
 
         <dt>
-            @Html.DisplayNameFor(model => model.DayID)
+            @Html.DisplayNameFor(model => model.Week.Day)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DayID)
+            @Html.DisplayFor(model => model.Week.Day)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ServiceID)
+            @Html.DisplayNameFor(model => model.Program.Service)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ServiceID)
+            @Html.DisplayFor(model => model.Program.Service)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RequestID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RequestID)
-        </dd>
-
-        <dt>
+               
+        @*<dt>
             @Html.DisplayNameFor(model => model.VolunteerStatus)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.VolunteerStatus)
-        </dd>
+        </dd>*@
 
     </dl>
 
@@ -66,7 +58,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Back to List", "Index", "Availabilities")
         </div>
     }
 </div>

@@ -207,6 +207,10 @@
     <Compile Include="Migrations\201807211807241_initial.Designer.cs">
       <DependentUpon>201807211807241_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807211914091_deletedrequestColumn.cs" />
+    <Compile Include="Migrations\201807211914091_deletedrequestColumn.Designer.cs">
+      <DependentUpon>201807211914091_deletedrequestColumn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -290,16 +294,15 @@
     <Content Include="Views\Admins\Details.cshtml" />
     <Content Include="Views\Admins\Edit.cshtml" />
     <Content Include="Views\Admins\Delete.cshtml" />
-    <Content Include="Views\Availabilities\Create.cshtml" />
     <Content Include="Views\Availabilities\Edit.cshtml" />
-    <Content Include="Views\Availabilities\Details.cshtml" />
-    <Content Include="Views\Availabilities\Delete.cshtml" />
     <Content Include="Views\Availabilities\Index.cshtml" />
     <Content Include="Views\Volunteers\Create.cshtml" />
     <Content Include="Views\Volunteers\Details.cshtml" />
     <Content Include="Views\Volunteers\Delete.cshtml" />
     <Content Include="Views\Volunteers\Edit.cshtml" />
     <Content Include="Views\Volunteers\Index.cshtml" />
+    <Content Include="Views\Availabilities\Create.cshtml" />
+    <Content Include="Views\Availabilities\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -320,6 +323,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807211807241_initial.resx">
       <DependentUpon>201807211807241_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807211914091_deletedrequestColumn.resx">
+      <DependentUpon>201807211914091_deletedrequestColumn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

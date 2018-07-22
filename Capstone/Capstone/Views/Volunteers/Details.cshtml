@@ -4,10 +4,10 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Profile</h2>
 
 <div>
-    <h4>Volunteer</h4>
+    <br />
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -66,17 +66,17 @@
             @Html.DisplayFor(model => model.BackgroundCheckStatus)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.ApplicationUserID)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ApplicationUserID)
-        </dd>
+        </dd>*@
 
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", "Home")
 </p>
