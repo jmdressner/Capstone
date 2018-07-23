@@ -129,13 +129,21 @@ namespace Capstone.Controllers
             }
             base.Dispose(disposing);
         }
-
+                
         public ActionResult RequestOffIndex()
         {
             var currentUserId = User.Identity.GetUserId();
-            var volunteer = db.Volunteers.Where(v => v.ApplicationUserID == currentUserId).FirstOrDefault();
-            var request = db.Requests.ToList().Where(r => r.VolunteerID == volunteer.ID).ToList();
-            return View(request);
+            if (User.IsInRole("Admin"))
+            {
+                var request = db.Requests.Include(r => r.Volunteer).ToList();
+                return View(request);
+            }
+            else
+            {
+                var volunteer = db.Volunteers.Where(v => v.ApplicationUserID == currentUserId).FirstOrDefault();
+                var request = db.Requests.Where(r => r.VolunteerID == volunteer.ID).ToList();
+                return View(request);
+            }
         }
 
         public ActionResult RequestOffCreate()

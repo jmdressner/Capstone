@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Capstone.Models.Availability>
+
+@{
+    ViewBag.Title = "ScheduleIndex";
+}
+
+<h2>All Availability</h2>
+
+<p>
+    @Html.ActionLink("Create New Schedule", "ScheduleCreate")
+</p>
+<table class="table">
+    <tr>
+        @*<a href="~/Views/Availabilities/ScheduleIndex.cshtml">~/Views/Availabilities/ScheduleIndex.cshtml</a>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Admin.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Volunteer.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Week.Day)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Program.Service)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VolunteerStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Admin.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Volunteer.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Week.Day)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Program.Service)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VolunteerStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "ScheduleEdit", new { id=item.ID }) |
+            
+            @Html.ActionLink("Delete", "ScheduleDelete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Add Availability", "Index", "Availabilities")
+</div>

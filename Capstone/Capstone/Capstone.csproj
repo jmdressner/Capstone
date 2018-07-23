@@ -307,6 +307,10 @@
     <Content Include="Views\Volunteers\RequestOffEdit.cshtml" />
     <Content Include="Views\Volunteers\RequestOffDelete.cshtml" />
     <Content Include="Views\Volunteers\RequestOffIndex.cshtml" />
+    <Content Include="Views\Availabilities\ScheduleIndex.cshtml" />
+    <Content Include="Views\Availabilities\ScheduleEdit.cshtml" />
+    <Content Include="Views\Availabilities\ScheduleDelete.cshtml" />
+    <Content Include="Views\Availabilities\ScheduleCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

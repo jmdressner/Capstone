@@ -1,13 +1,18 @@
 ﻿@model IEnumerable<Capstone.Models.Availability>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ScheduleCreate";
 }
 
-<h2>My Availability</h2>
+<h2>Schedule</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("View Availability", "ScheduleIndex", "Availabilities")
+        <br />
+        @Html.ActionLink("View Request Off", "RequestOffIndex", "Volunteers")
+     }
 </p>
 <table class="table">
     <tr>
@@ -17,21 +22,18 @@
                 @Html.DisplayNameFor(model => model.Admin.Name)
             </th>
         }
-        else
-        {
-            <th>
-                @Html.DisplayNameFor(model => model.Volunteer.Name)
-            </th>
-        }
+        <th>
+            @Html.DisplayNameFor(model => model.Volunteer.Name)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Week.Day)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Program.Service)
         </th>
-        @*<th>
+        <th>
             @Html.DisplayNameFor(model => model.VolunteerStatus)
-        </th>*@
+        </th>
         <th></th>
     </tr>
 
@@ -43,39 +45,24 @@
                 @Html.DisplayFor(modelItem => item.Admin.Name)
             </td>
         }
-        else
-        {
-            <td>
-                @Html.DisplayFor(modelItem => item.Volunteer.Name)
-            </td>
-        }
+        <td>
+            @Html.DisplayFor(modelItem => item.Volunteer.Name)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Week.Day)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Program.Service)
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.VolunteerStatus)
-        </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-
-            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            @Html.DisplayFor(modelItem => item.VolunteerStatus)
         </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>*@
     </tr>
 }
 
 </table>
-
-<br />
-<div>
-    @Html.ActionLink("Request Off", "RequestOffIndex", "Volunteers")
-</div>
-<br />
-<div>
-    @if (User.IsInRole("Admin"))
-    {
-        @Html.ActionLink("Back to All Availability", "ScheduleIndex", "Availabilities")
-    }
-</div>

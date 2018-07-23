@@ -34,12 +34,29 @@
         <td>
             @Html.DisplayFor(modelItem => item.Reason)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "RequestOffEdit", new { id=item.ID }) |
-            
-            @Html.ActionLink("Delete", "RequestOffDelete", new { id=item.ID })
-        </td>
+
+        @if (User.IsInRole("Volunteer"))
+        {
+            <td>
+                @Html.ActionLink("Edit", "RequestOffEdit", new { id = item.ID }) |
+
+                @Html.ActionLink("Delete", "RequestOffDelete", new { id = item.ID })
+            </td>
+        }
+        else
+        {
+            <td>
+                @Html.ActionLink("Delete", "RequestOffDelete", new { id = item.ID })
+            </td>
+        }
     </tr>
 }
 
 </table>
+
+<div>
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Back to All Availability", "ScheduleIndex", "Availabilities")
+    }
+</div>

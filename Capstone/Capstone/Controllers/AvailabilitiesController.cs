@@ -167,15 +167,53 @@ namespace Capstone.Controllers
             {
                 db.Entry(availability).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("ScheduleIndex", "Admins");
+                return RedirectToAction("ScheduleIndex", "Availabilities");
             }
             return View(availability);
         }
 
         public ActionResult ScheduleCreate()
         {
-            var availabilities = db.Availabilities.Include(a => a.Admin).Include(a => a.Volunteer).Include(a => a.Week).Include(a => a.Program).OrderBy(a => a.DayID).Where(a => a.VolunteerStatus == true).ToList();
-            return View(availabilities);
+            var currentUserId = User.Identity.GetUserId();
+            if (User.IsInRole("Admin"))
+            {
+                var availabilities = db.Availabilities.Include(a => a.Admin).Include(a => a.Volunteer).Include(a => a.Week).Include(a => a.Program).OrderBy(a => a.DayID).Where(a => a.VolunteerStatus == true).ToList();
+                return View(availabilities);
+            }
+            else
+            {
+                var volunteer = db.Volunteers.Where(v => v.ApplicationUserID == currentUserId).FirstOrDefault();
+                var availabilities = db.Availabilities.Include(a => a.Admin).Include(a => a.Volunteer).Include(a => a.Week).Include(a => a.Program).Where(a => a.VolunteerID == volunteer.ID).OrderBy(a => a.DayID).ToList();
+                return View(availabilities);
+            }  
+        }
+
+        public ActionResult ScheduleDelete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Availability availability = db.Availabilities.Include(a => a.Admin).Include(a => a.Volunteer).Include(a => a.Week).Include(a => a.Program).Where(a => a.ID == id).FirstOrDefault();
+            if (availability == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.DayID = new SelectList(db.Weeks, "ID", "Day", availability.DayID);
+            ViewBag.ServiceID = new SelectList(db.Programs, "ID", "Service", availability.ServiceID);
+
+            return View(availability);
+        }
+
+        [HttpPost, ActionName("ScheduleDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult ScheduleDeleteConfirmed(int id)
+        {
+            Availability availability = db.Availabilities.Include(a => a.Admin).Include(a => a.Volunteer).Include(a => a.Week).Include(a => a.Program).Where(a => a.ID == id).FirstOrDefault();
+            db.Availabilities.Remove(availability);
+            db.SaveChanges();
+            return RedirectToAction("ScheduleIndex", "Availabilities");
         }
     }
 }
