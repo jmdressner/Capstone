@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Capstone.Models.Request>
+
+@{
+    ViewBag.Title = "RequestOffIndex";
+}
+
+<h2>Request Off</h2>
+
+<p>
+    @Html.ActionLink("Add Request", "RequestOffCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Volunteer.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reason)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Volunteer.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reason)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "RequestOffEdit", new { id=item.ID }) |
+            
+            @Html.ActionLink("Delete", "RequestOffDelete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

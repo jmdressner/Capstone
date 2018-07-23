@@ -129,5 +129,89 @@ namespace Capstone.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult RequestOffIndex()
+        {
+            var currentUserId = User.Identity.GetUserId();
+            var volunteer = db.Volunteers.Where(v => v.ApplicationUserID == currentUserId).FirstOrDefault();
+            var request = db.Requests.ToList().Where(r => r.VolunteerID == volunteer.ID).ToList();
+            return View(request);
+        }
+
+        public ActionResult RequestOffCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RequestOffCreate([Bind(Include = "ID,VolunteerID,Date,Reason")] Request request)
+        {
+            var currentUserId = User.Identity.GetUserId();
+            var volunteer = db.Volunteers.Where(v => v.ApplicationUserID == currentUserId).FirstOrDefault();
+            
+            if (ModelState.IsValid)
+            {
+                db.Requests.Add(request);
+                request.VolunteerID = volunteer.ID;
+                db.SaveChanges();
+                return RedirectToAction("RequestOffIndex", "Volunteers");
+            }
+
+            return View(volunteer);
+        }
+
+        public ActionResult RequestOffEdit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Request request = db.Requests.Find(id);
+
+            if (request == null)
+            {
+                return HttpNotFound();
+            }
+            return View(request);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RequestOffEdit([Bind(Include = "Id,VolunteerID,Date,Reason")] Request request)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(request).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("RequestOffIndex", "Volunteers");
+            }
+            return View(request);
+        }
+
+        public ActionResult RequestOffDelete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Request request = db.Requests.Find(id);
+            
+            if (request == null)
+            {
+                return HttpNotFound();
+            }
+            return View(request);
+        }
+
+        [HttpPost, ActionName("RequestOffDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult RequestOffDeleteConfirmed(int id)
+        {
+            Request request = db.Requests.Find(id);
+            db.Requests.Remove(request);
+            db.SaveChanges();
+            return RedirectToAction("RequestOffIndex", "Volunteers");
+        }
     }
 }
