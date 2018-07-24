@@ -80,7 +80,8 @@ namespace Capstone.Controllers
                     case "Date of Arrival":
                         if (!String.IsNullOrEmpty(searchString))
                         {
-                            //students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.DateOfArrival.Contains(searchString));
+                            var testDate = Convert.ToDateTime(searchString);
+                            students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.DateOfArrival.Equals(testDate));
                             return View(students);
                         }
                         break;
@@ -94,7 +95,8 @@ namespace Capstone.Controllers
                     case "Date of Registration":
                         if (!String.IsNullOrEmpty(searchString))
                         {
-                            //students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.DateOfRegistration.Contains(searchString));
+                            var testDate = Convert.ToDateTime(searchString);
+                            students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.DateOfRegistration.Equals(testDate));
                             return View(students);
                         }
                         break;
