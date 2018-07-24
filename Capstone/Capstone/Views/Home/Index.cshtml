@@ -8,24 +8,30 @@
     <center><p class="lead">Welcome to ILCT! Please look through our site to see what we do and how to get involved.</p></center>
 </div>
 
-<div class="row">
-    @*<div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<style>
+    /* Always set the map height explicitly to define the size of the div
+        * element that contains the map. */
+    #map {
+        height: 400px;
+        width: 700px;
+    }
+</style>
+<body>
+    <div class="row">
+        <center><div id="map"></div></center>
+        <script>
+            var map;
+                       
+            function initMap() {
+                var langCenter = { lat: 42.968031, lng: -87.909296 };
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    center: langCenter,
+                    zoom: 13
+                });
+                var marker = new google.maps.Marker({ position: langCenter, map: map });
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"
+                async defer></script>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>*@
-</div>
+</body>
