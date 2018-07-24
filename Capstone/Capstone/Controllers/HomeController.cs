@@ -10,6 +10,9 @@ namespace Capstone.Controllers
     {
         public ActionResult Index()
         {
+
+
+            ViewBag.Key = Key.GOOGLE_MAP_KEY;
             return View();
         }
 
@@ -40,5 +43,7 @@ namespace Capstone.Controllers
         {
             return View();
         }
+
+
     }
 }
