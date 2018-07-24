@@ -30,5 +30,15 @@ namespace Capstone.Controllers
         {
             return View();
         }
+
+        public ActionResult Videos()
+        {
+            return View();
+        }
+
+        public ActionResult Questions()
+        {
+            return View();
+        }
     }
 }
