@@ -15,9 +15,150 @@ namespace Capstone.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Students
-        public ActionResult Index()
+        public ViewResult Index(string sortOrder, string heading, string searchString)
         {
-            var students = db.Students.Include(s => s.Agency).Include(s => s.Program);
+            
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_asc" : "";
+            ViewBag.EmailSortParm = String.IsNullOrEmpty(sortOrder) ? "email_asc" : "";
+            ViewBag.PhoneSortParm = String.IsNullOrEmpty(sortOrder) ? "phone_asc" : "";
+            ViewBag.AddressSortParm = String.IsNullOrEmpty(sortOrder) ? "address_asc" : "";
+            ViewBag.ZipcodeSortParm = String.IsNullOrEmpty(sortOrder) ? "zipcode_asc" : "";
+            ViewBag.CountrySortParm = String.IsNullOrEmpty(sortOrder) ? "country_asc" : "";
+            ViewBag.DateASortParm = sortOrder == "DateOfArrival" ? "dateA_asc" : "DateOfArrival";
+            ViewBag.AgencySortParm = String.IsNullOrEmpty(sortOrder) ? "agency_asc" : "";
+            ViewBag.DateRSortParm = sortOrder == "DateOfRegistration" ? "dateR_asc" : "DateOfRegistration";
+            ViewBag.ServiceSortParm = String.IsNullOrEmpty(sortOrder) ? "service_asc" : "";
+
+            var students = db.Students.Include(s => s.Agency).Include(s => s.Program).Select(s => s);
+
+            if (!String.IsNullOrEmpty(heading))
+            {
+                switch (heading)
+                {
+                    case "Name":
+                        if (!String.IsNullOrEmpty(searchString))
+                        {
+                            students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.Name.Contains(searchString));
+                            return View(students);
+                        }
+                        break;
+                    case "Email":
+                        if (!String.IsNullOrEmpty(searchString))
+                        {
+                            students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.Email.Contains(searchString));
+                            return View(students);
+                        }
+                        break;
+                    case "Phone":
+                        if (!String.IsNullOrEmpty(searchString))
+                        {
+                            students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.Phone.Contains(searchString));
+                            return View(students);
+                        }
+                        break;
+                    case "Address":
+                        if (!String.IsNullOrEmpty(searchString))
+                        {
+                            students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.Address.Contains(searchString));
+                            return View(students);
+                        }
+                        break;
+                    case "Zipcode":
+                        if (!String.IsNullOrEmpty(searchString))
+                        {
+                            students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.Zipcode.Contains(searchString));
+                            return View(students);
+                        }
+                        break;
+                    case "Country":
+                        if (!String.IsNullOrEmpty(searchString))
+                        {
+                            students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.Country.Contains(searchString));
+                            return View(students);
+                        }
+                        break;
+                    case "Date of Arrival":
+                        if (!String.IsNullOrEmpty(searchString))
+                        {
+                            //students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.DateOfArrival.Contains(searchString));
+                            return View(students);
+                        }
+                        break;
+                    case "Agency":
+                        if (!String.IsNullOrEmpty(searchString))
+                        {
+                            students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.Agency.Settlement.Contains(searchString));
+                            return View(students);
+                        }
+                        break;
+                    case "Date of Registration":
+                        if (!String.IsNullOrEmpty(searchString))
+                        {
+                            //students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.DateOfRegistration.Contains(searchString));
+                            return View(students);
+                        }
+                        break;
+                    case "Service":
+                        if (!String.IsNullOrEmpty(searchString))
+                        {
+                            students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.Program.Service.Contains(searchString));
+                            return View(students);
+                        }
+                        break;
+                    default:
+                        if (!String.IsNullOrEmpty(searchString))
+                        {
+                            students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.Name.Contains(searchString));
+                            return View(students);
+                        }
+                        break;
+                }
+            }
+            
+
+            switch (sortOrder)
+            {
+                case "name_asc":
+                    students = db.Students.Include(s => s.Agency).Include(s => s.Program).OrderBy(s => s.Name);
+                    break;
+                case "email_asc":
+                    students = db.Students.Include(s => s.Agency).Include(s => s.Program).OrderBy(s => s.Email);
+                    break;
+                case "phone_asc":
+                    students = db.Students.Include(s => s.Agency).Include(s => s.Program).OrderBy(s => s.Phone);
+                    break;
+                case "address_asc":
+                    students = db.Students.Include(s => s.Agency).Include(s => s.Program).OrderBy(s => s.Address);
+                    break;
+                case "zipcode_asc":
+                    students = db.Students.Include(s => s.Agency).Include(s => s.Program).OrderBy(s => s.Zipcode);
+                    break;
+                case "country_asc":
+                    students = db.Students.Include(s => s.Agency).Include(s => s.Program).OrderBy(s => s.Country);
+                    break;
+                case "DateOfArrival":
+                    students = db.Students.Include(s => s.Agency).Include(s => s.Program).OrderBy(s => s.DateOfArrival);
+                    break;
+                case "dateA_asc":
+                    students = db.Students.Include(s => s.Agency).Include(s => s.Program).OrderBy(s => s.DateOfArrival);
+                    break;
+                case "agency_asc":
+                    students = db.Students.Include(s => s.Agency).Include(s => s.Program).OrderBy(s => s.Agency.Settlement);
+                    break;
+                case "DateofRegistration":
+                    students = db.Students.Include(s => s.Agency).Include(s => s.Program).OrderBy(s => s.DateOfRegistration);
+                    break;
+                case "dateR_asc":
+                    students = db.Students.Include(s => s.Agency).Include(s => s.Program).OrderBy(s => s.DateOfRegistration);
+                    break;
+                case "service_asc":
+                    students = db.Students.Include(s => s.Agency).Include(s => s.Program).OrderBy(s => s.Program.Service);
+                    break;
+                default:
+                    students = db.Students.Include(s => s.Agency).Include(s => s.Program).OrderBy(s => s.Name);
+                    break;
+            }
+
             return View(students.ToList());
         }
 
