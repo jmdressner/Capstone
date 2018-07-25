@@ -7,7 +7,7 @@
 <h2>My Availability</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add Day", "Create")
 </p>
 <table class="table">
     <tr>
@@ -68,10 +68,6 @@
 
 </table>
 
-<br />
-<div>
-    @Html.ActionLink("Request Off", "RequestOffIndex", "Volunteers")
-</div>
 <br />
 <div>
     @if (User.IsInRole("Admin"))
