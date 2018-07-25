@@ -39,7 +39,7 @@ namespace Capstone.Models
 
         public IEnumerable<Program> Programs { get; set; }
 
-        [Display(Name = "Brief Biography")]
+        [Display(Name = "Notes")]
         public string Bio { get; set; }
     }
 }

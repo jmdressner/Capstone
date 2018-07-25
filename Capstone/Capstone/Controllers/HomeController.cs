@@ -16,6 +16,24 @@ namespace Capstone.Controllers
             return View();
         }
 
+        public ActionResult Download()
+        {
+            string file = "\\Users\\Julie\\Documents\\projects\\Capstone\\100q.pdf";
+            //string file = "~\\..\\files\\100q.pdf";
+
+            if (!System.IO.File.Exists(file))
+            {
+                return HttpNotFound();
+            }
+
+            var fileBytes = System.IO.File.ReadAllBytes(file);
+            var response = new FileContentResult(fileBytes, "application/octet-stream")
+            {
+                FileDownloadName = "100q.pdf"
+            };
+            return response;
+        }
+
         public ActionResult About()
         {
 
