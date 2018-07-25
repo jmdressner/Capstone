@@ -51,6 +51,28 @@ namespace Capstone.Controllers
             return View();
         }
 
+        public ActionResult VolunteerProcess()
+        {
+            return View();
+        }
+
+        public ActionResult DownloadFile()
+        {
+            string file = "\\Users\\Julie\\Documents\\projects\\Capstone\\Capstone\\Capstone\\files\\VolunteerInfo.docx";
+
+            if (!System.IO.File.Exists(file))
+            {
+                return HttpNotFound();
+            }
+
+            var fileBytes = System.IO.File.ReadAllBytes(file);
+            var response = new FileContentResult(fileBytes, "application/octet-stream")
+            {
+                FileDownloadName = "VolunteerInfo.docx"
+            };
+            return response;
+        }
+
         public ActionResult Videos()
         {
             return View();
