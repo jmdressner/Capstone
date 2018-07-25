@@ -18,8 +18,7 @@ namespace Capstone.Controllers
 
         public ActionResult Download()
         {
-            string file = "\\Users\\Julie\\Documents\\projects\\Capstone\\100q.pdf";
-            //string file = "~\\..\\files\\100q.pdf";
+            string file = "\\Users\\Julie\\Documents\\projects\\Capstone\\Capstone\\Capstone\\files\\100q.pdf";
 
             if (!System.IO.File.Exists(file))
             {
