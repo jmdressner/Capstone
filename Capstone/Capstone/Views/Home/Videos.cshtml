@@ -7,7 +7,11 @@
 <br />
 <center><h4>Beginner English Videos</h4></center>
 <br>
-<center><div id="ytplayer"></div></center>
+<center><div id="video1"></div></center>
+<br />
+<center><h4>Intermediate English Videos</h4></center>
+<br />
+<center><div id="video2"></div></center>
 
 <script>
     // Load the IFrame Player API code asynchronously.
@@ -18,9 +22,10 @@
 
     // Replace the 'ytplayer' element with an <iframe> and
     // YouTube player after the API code downloads.
-    var player;
+    var player1;
+    var player2;
     function onYouTubePlayerAPIReady() {
-        player = new YT.Player('ytplayer', {
+        player1 = new YT.Player('video1', {
             height: '360',
             width: '640',
             playerVars:
@@ -29,10 +34,17 @@
                     list: 'PLt_HlHMBZtkDeqKMgJx_ZCK9wf2nkutAO'
                 }
         });
+        player2 = new YT.Player('video2', {
+            height: '360',
+            width: '640',
+            playerVars:
+                {
+                    listType: 'playlist',
+                    list: 'PLt_HlHMBZtkBh9PRnFzFbU1eaBed4HfM9'
+                }
+        });
     }
 </script>
-<br />
-<center><h4>Intermediate English Videos</h4></center>
-<br />
+
 
 
