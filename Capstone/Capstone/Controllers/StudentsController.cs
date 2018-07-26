@@ -107,6 +107,13 @@ namespace Capstone.Controllers
                             return View(students);
                         }
                         break;
+                    case "Notes":
+                        if (!String.IsNullOrEmpty(searchString))
+                        {
+                            students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.Bio.Contains(searchString));
+                            return View(students);
+                        }
+                        break;
                     default:
                         if (!String.IsNullOrEmpty(searchString))
                         {

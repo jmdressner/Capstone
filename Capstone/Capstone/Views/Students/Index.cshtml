@@ -14,6 +14,7 @@
     @using (Html.BeginForm())
     {
         <p>
+            
             Heading: @Html.TextBox("heading")
             Find by: @Html.TextBox("searchString")
             <input type="submit" value="Search"/>
@@ -45,7 +46,7 @@
                 @Html.ActionLink("Date of Arrival", "Index", new { sortOrder = ViewBag.DateASortParm })
             </th>
             <th>
-                @Html.ActionLink("Agency", "Index", new { sortOrder = ViewBag.AgencySortParm })
+                @Html.ActionLink("Settlement Agency", "Index", new { sortOrder = ViewBag.AgencySortParm })
             </th>
             <th>
                 @Html.ActionLink("Date of Registration", "Index", new { sortOrder = ViewBag.DateRSortParm })

@@ -2,6 +2,37 @@
 @{
     ViewBag.Title = "Videos";
 }
-
+<br />
 <center><h2>Videos</h2></center>
+<br />
+<center><h4>Beginner English Videos</h4></center>
+<br>
+<center><div id="ytplayer"></div></center>
+
+<script>
+    // Load the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // Replace the 'ytplayer' element with an <iframe> and
+    // YouTube player after the API code downloads.
+    var player;
+    function onYouTubePlayerAPIReady() {
+        player = new YT.Player('ytplayer', {
+            height: '360',
+            width: '640',
+            playerVars:
+                {
+                    listType: 'playlist',
+                    list: 'PLt_HlHMBZtkDeqKMgJx_ZCK9wf2nkutAO'
+                }
+        });
+    }
+</script>
+<br />
+<center><h4>Intermediate English Videos</h4></center>
+<br />
+
 
