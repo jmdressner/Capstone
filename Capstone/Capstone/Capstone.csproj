@@ -221,6 +221,7 @@
     <Compile Include="Models\Availability.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Mail.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Program.cs" />
     <Compile Include="Models\Request.cs" />
@@ -242,7 +243,12 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\center2a.jpeg" />
+    <Content Include="images\GPAClass.jpg" />
     <Content Include="images\ILCT Logo 1510 Left.jpg" />
+    <Content Include="images\LaurenTable.jpg" />
+    <Content Include="images\MarciaTable.jpg" />
+    <Content Include="images\TomClass.jpg" />
+    <Content Include="images\WendyClass.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
