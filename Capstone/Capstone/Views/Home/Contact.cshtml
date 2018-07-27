@@ -3,16 +3,9 @@
     ViewBag.Title = "Contact";
 }
 <br />
-<h4><strong>Location</strong></h4>
 
-<address>
-    4204 S. Howell Avenue<br />
-    Milwaukee, WI 53207<br />
-    <abbr title="Phone">Phone:</abbr>
-    414.269.9952
-</address>
-
-<h4><strong>Contact for more Information</strong></h4>
+<h3><strong>Contact for more Information</strong></h3>
+<br />
 <address>
     <strong>Director:</strong>   <a href="mailto:ilctmilwaukee@gmail.com">ilctmilwaukee@gmail.com</a>
 </address>
@@ -21,96 +14,35 @@
 {
     @Html.ValidationSummary()
 <fieldset>
-    <div class="form-div-1">
-        <label class="name">
-            @Html.TextBoxFor(m => m.Name, new { @placeholder = "Name *", @type = "text" })
-        </label>
-    </div>
-    <div class="form-div-2">
-        <label class="email">
-            @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email Address *", @type = "email" })
-        </label>
-    </div>
-    <div class="form-div-2">
-        <label class="email">
-            @Html.TextBoxFor(m => m.EmailPassword, new { @placeholder = "Email Password *", @type = "password" })
-        </label>
-    </div>
-    <div class="form-div-3">
-        <label class="phone">
-            @Html.TextBoxFor(m => m.Subject, new { @placeholder = "Subject", @type = "text" })
-        </label>
-    </div>
-    <div>
-        <label class="message">
-            @Html.TextAreaFor(m => m.Message, new { @placeholder = "Message *" })
-        </label>
-    </div>
-    <div class="button-wrapper">
-        <input type="submit" value="Send" name="submit" class="button"> <input type="reset" value="Reset" name="MFReset" class="button"><span>* Required Fields</span>
+    <div class="col-md-6">
+        <div class="form-div-1">
+            <label class="name">
+                @Html.TextBoxFor(m => m.Name, new { @placeholder = "Name *", @type = "text" })
+            </label>
+        </div>
+        <div class="form-div-2">
+            <label class="email">
+                @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email Address *", @type = "email" })
+            </label>
+        </div>
+        <div class="form-div-2">
+            <label class="email">
+                @Html.TextBoxFor(m => m.EmailPassword, new { @placeholder = "Email Password *", @type = "password" })
+            </label>
+        </div>
+        <div class="form-div-3">
+            <label class="phone">
+                @Html.TextBoxFor(m => m.Subject, new { @placeholder = "Subject", @type = "text" })
+            </label>
+        </div>
+        <div>
+            <label class="message">
+                @Html.TextAreaFor(m => m.Message, new { @placeholder = "Message *" })
+            </label>
+        </div>
+        <div class="button-wrapper">
+            <input type="submit" value="Send" name="submit" class="button"> <input type="reset" value="Reset" name="MFReset" class="button"><span>* Required Fields</span>
+        </div>
     </div>
 </fieldset>
 }
-
-
-
-@*<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <div>
-        <div class="col-md-6">
-            <div>
-                @if (ViewBag.Message == null)
-                {
-                    <div>
-                        <form method="post">
-                            <div class="form-group">
-                                <label asp-for="Name">Name</label>
-                                <input asp-for="Name" class="form-control" />
-                                <span asp-validation-for="Name"
-                                      class="text-muted"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Email">Email</label>
-                                <input asp-for="Email" class="form-control" />
-                                <span asp-validation-for="Email"
-                                      class="text-muted"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Subject">Subject</label>
-                                <input asp-for="Subject" class="form-control" />
-                                <span asp-validation-for="Subject"
-                                      class="text-muted"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Message">Message</label>
-                                <textarea rows="5" cols="15"
-                                          asp-for="Message" class="form-control"></textarea>
-                                <span asp-validation-for="Message"
-                                      class="text-muted"></span>
-                            </div>
-                            <div>
-                                <button type="submit"
-                                        class="btn btn-success">
-                                    Send
-                                </button>
-                            </div>
-
-                        </form>
-                    </div>
-                }
-            </div>
-
-            <div>
-                <div>
-                    @if (ViewBag.Message != null)
-                    {
-                        <div>@ViewBag.Message</div>
-
-
-                    }
-                </div>
-            </div>
-        </div>
-
-    </div>*@

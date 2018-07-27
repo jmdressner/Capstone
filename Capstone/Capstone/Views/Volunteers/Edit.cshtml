@@ -92,9 +92,16 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Details", "Volunteers")
-</div>
+    <div>
+        @if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Back to List", "Index", "Volunteers")
+        }
+        else
+        {
+            @Html.ActionLink("Back to List", "Details", "Volunteers")
+        }
+    </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
