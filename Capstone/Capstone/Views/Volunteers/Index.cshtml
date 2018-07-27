@@ -12,25 +12,25 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Phone)
+            @Html.ActionLink("Phone", "Index", new { sortOrder = ViewBag.PhoneSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Address)
+            @Html.ActionLink("Address", "Index", new { sortOrder = ViewBag.AddressSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Zipcode)
+            @Html.ActionLink("Zipcode", "Index", new { sortOrder = ViewBag.ZipcodeSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Church)
+            @Html.ActionLink("Church", "Index", new { sortOrder = ViewBag.ChurchSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BackgroundCheckStatus)
+            @Html.ActionLink("Background Check", "Index", new { sortOrder = ViewBag.BackgroundCheckSortParm })
         </th>
         @*<th>
             @Html.DisplayNameFor(model => model.ApplicationUserID)

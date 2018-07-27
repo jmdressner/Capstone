@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -16,9 +17,45 @@ namespace Capstone.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Volunteers
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
-            return View(db.Volunteers.ToList());
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_asc" : "";
+            ViewBag.EmailSortParm = String.IsNullOrEmpty(sortOrder) ? "email_asc" : "";
+            ViewBag.PhoneSortParm = String.IsNullOrEmpty(sortOrder) ? "phone_asc" : "";
+            ViewBag.AddressSortParm = String.IsNullOrEmpty(sortOrder) ? "address_asc" : "";
+            ViewBag.ZipcodeSortParm = String.IsNullOrEmpty(sortOrder) ? "zipcode_asc" : "";
+            ViewBag.ChurchSortParm = String.IsNullOrEmpty(sortOrder) ? "church_asc" : "";
+            ViewBag.BackgroundCheckSortParm = sortOrder == "BackgroundCheck" ? "BackGC_asc" : "BackgroundCheck";
+            var volunteers = db.Volunteers.Select(v => v);
+
+            switch (sortOrder)
+            {
+                case "name_asc":
+                    volunteers = db.Volunteers.OrderBy(v => v.Name);
+                    break;
+                case "email_asc":
+                    volunteers = db.Volunteers.OrderBy(v => v.Email);
+                    break;
+                case "phone_asc":
+                    volunteers = db.Volunteers.OrderBy(v => v.Phone);
+                    break;
+                case "address_asc":
+                    volunteers = db.Volunteers.OrderBy(v => v.Address);
+                    break;
+                case "zipcode_asc":
+                    volunteers = db.Volunteers.OrderBy(v => v.Zipcode);
+                    break;
+                case "church_asc":
+                    volunteers = db.Volunteers.OrderBy(v => v.Church);
+                    break;
+                case "BackgroundCheck":
+                    volunteers = db.Volunteers.OrderBy(v => v.BackgroundCheckStatus);
+                    break;
+                default:
+                    volunteers = db.Volunteers.OrderBy(v => v.Name);
+                    break;
+            }
+            return View(volunteers.ToList());
         }
 
         // GET: Volunteers/Details/5
