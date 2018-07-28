@@ -4,16 +4,22 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Events</h2>
+<h2>Index</h2>
 
 <p>
-    @if (User.IsInRole("Admin"))
-    {
-        @Html.ActionLink("Create New Event", "Create")
-    }
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Admin.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventResponse.Response)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Volunteer.Name)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
@@ -35,6 +41,15 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.Admin.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventResponse.Response)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Volunteer.Name)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Date)
         </td>
         <td>
@@ -50,14 +65,9 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @if (User.IsInRole("Admin"))
-            {
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID })
-                <br />
-                @Html.ActionLink("Details", "Details", new { id = item.ID })
-                <br />
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            }
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
 }

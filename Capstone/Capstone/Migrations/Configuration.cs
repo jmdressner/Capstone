@@ -55,6 +55,13 @@ namespace Capstone.Migrations
                     new Models.Agency { Settlement = "Asylum" },
                     new Models.Agency { Settlement = "N/A" }
                 );
+
+            context.EventResponses.AddOrUpdate(
+                r => r.Response,
+                    new Models.EventResponse { Response = "Yes, I'm coming!" },
+                    new Models.EventResponse { Response = "Maybe" },
+                    new Models.EventResponse { Response = "Sorry, I can't make it."}
+                );
         }
     }
 }

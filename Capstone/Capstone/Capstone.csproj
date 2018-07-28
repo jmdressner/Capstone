@@ -206,13 +206,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Key.cs" />
-    <Compile Include="Migrations\201807211807241_initial.cs" />
-    <Compile Include="Migrations\201807211807241_initial.Designer.cs">
-      <DependentUpon>201807211807241_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807211914091_deletedrequestColumn.cs" />
-    <Compile Include="Migrations\201807211914091_deletedrequestColumn.Designer.cs">
-      <DependentUpon>201807211914091_deletedrequestColumn.cs</DependentUpon>
+    <Compile Include="Migrations\201807280139015_initial.cs" />
+    <Compile Include="Migrations\201807280139015_initial.Designer.cs">
+      <DependentUpon>201807280139015_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -220,6 +216,7 @@
     <Compile Include="Models\Agency.cs" />
     <Compile Include="Models\Availability.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\EventResponse.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Mail.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -330,15 +327,15 @@
     <Content Include="Views\Students\Details.cshtml" />
     <Content Include="Views\Students\Edit.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
+    <Content Include="Views\Home\Service.cshtml" />
+    <Content Include="Views\Home\Videos.cshtml" />
+    <Content Include="Views\Home\Questions.cshtml" />
+    <Content Include="Views\Home\VolunteerProcess.cshtml" />
     <Content Include="Views\Events\Create.cshtml" />
     <Content Include="Views\Events\Delete.cshtml" />
     <Content Include="Views\Events\Details.cshtml" />
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
-    <Content Include="Views\Home\Service.cshtml" />
-    <Content Include="Views\Home\Videos.cshtml" />
-    <Content Include="Views\Home\Questions.cshtml" />
-    <Content Include="Views\Home\VolunteerProcess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -357,11 +354,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807211807241_initial.resx">
-      <DependentUpon>201807211807241_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807211914091_deletedrequestColumn.resx">
-      <DependentUpon>201807211914091_deletedrequestColumn.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807280139015_initial.resx">
+      <DependentUpon>201807280139015_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

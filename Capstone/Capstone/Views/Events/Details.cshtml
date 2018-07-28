@@ -4,12 +4,36 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Event Details</h2>
+<h2>Details</h2>
 
 <div>
-    <br />
+    <h4>Event</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EventResponse.Response)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EventResponse.Response)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Volunteer.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Volunteer.Name)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Date)
         </dt>

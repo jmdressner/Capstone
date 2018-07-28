@@ -102,20 +102,17 @@ namespace Capstone.Migrations
                         VolunteerID = c.Int(),
                         DayID = c.Int(nullable: false),
                         ServiceID = c.Int(nullable: false),
-                        RequestID = c.Int(nullable: false),
                         VolunteerStatus = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Admins", t => t.AdminID)
                 .ForeignKey("dbo.Programs", t => t.ServiceID, cascadeDelete: true)
-                .ForeignKey("dbo.Requests", t => t.RequestID, cascadeDelete: true)
                 .ForeignKey("dbo.Volunteers", t => t.VolunteerID)
                 .ForeignKey("dbo.Weeks", t => t.DayID, cascadeDelete: true)
                 .Index(t => t.AdminID)
                 .Index(t => t.VolunteerID)
                 .Index(t => t.DayID)
-                .Index(t => t.ServiceID)
-                .Index(t => t.RequestID);
+                .Index(t => t.ServiceID);
             
             CreateTable(
                 "dbo.Programs",
@@ -123,16 +120,6 @@ namespace Capstone.Migrations
                     {
                         ID = c.Int(nullable: false, identity: true),
                         Service = c.String(),
-                    })
-                .PrimaryKey(t => t.ID);
-            
-            CreateTable(
-                "dbo.Requests",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        Date = c.DateTime(nullable: false),
-                        Reason = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -164,17 +151,48 @@ namespace Capstone.Migrations
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
+                "dbo.EventResponses",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        Response = c.String(),
+                    })
+                .PrimaryKey(t => t.ID);
+            
+            CreateTable(
                 "dbo.Events",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
+                        AdminID = c.Int(),
+                        VolunteerID = c.Int(),
                         Date = c.DateTime(nullable: false),
                         Time = c.String(),
                         Location = c.String(),
                         Occasion = c.String(),
                         Description = c.String(),
+                        ResponseID = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Admins", t => t.AdminID)
+                .ForeignKey("dbo.EventResponses", t => t.ResponseID, cascadeDelete: true)
+                .ForeignKey("dbo.Volunteers", t => t.VolunteerID)
+                .Index(t => t.AdminID)
+                .Index(t => t.VolunteerID)
+                .Index(t => t.ResponseID);
+            
+            CreateTable(
+                "dbo.Requests",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        VolunteerID = c.Int(),
+                        Date = c.DateTime(nullable: false),
+                        Reason = c.String(),
+                    })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Volunteers", t => t.VolunteerID)
+                .Index(t => t.VolunteerID);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -216,10 +234,13 @@ namespace Capstone.Migrations
             DropForeignKey("dbo.Students", "ServiceID", "dbo.Programs");
             DropForeignKey("dbo.Students", "AgencyID", "dbo.Agencies");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Requests", "VolunteerID", "dbo.Volunteers");
+            DropForeignKey("dbo.Events", "VolunteerID", "dbo.Volunteers");
+            DropForeignKey("dbo.Events", "ResponseID", "dbo.EventResponses");
+            DropForeignKey("dbo.Events", "AdminID", "dbo.Admins");
             DropForeignKey("dbo.Availabilities", "DayID", "dbo.Weeks");
             DropForeignKey("dbo.Availabilities", "VolunteerID", "dbo.Volunteers");
             DropForeignKey("dbo.Volunteers", "ApplicationUserID", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Availabilities", "RequestID", "dbo.Requests");
             DropForeignKey("dbo.Availabilities", "ServiceID", "dbo.Programs");
             DropForeignKey("dbo.Availabilities", "AdminID", "dbo.Admins");
             DropForeignKey("dbo.Admins", "ApplicationUserID", "dbo.AspNetUsers");
@@ -229,8 +250,11 @@ namespace Capstone.Migrations
             DropIndex("dbo.Students", new[] { "ServiceID" });
             DropIndex("dbo.Students", new[] { "AgencyID" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Requests", new[] { "VolunteerID" });
+            DropIndex("dbo.Events", new[] { "ResponseID" });
+            DropIndex("dbo.Events", new[] { "VolunteerID" });
+            DropIndex("dbo.Events", new[] { "AdminID" });
             DropIndex("dbo.Volunteers", new[] { "ApplicationUserID" });
-            DropIndex("dbo.Availabilities", new[] { "RequestID" });
             DropIndex("dbo.Availabilities", new[] { "ServiceID" });
             DropIndex("dbo.Availabilities", new[] { "DayID" });
             DropIndex("dbo.Availabilities", new[] { "VolunteerID" });
@@ -243,10 +267,11 @@ namespace Capstone.Migrations
             DropIndex("dbo.Admins", new[] { "ApplicationUserID" });
             DropTable("dbo.Students");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Requests");
             DropTable("dbo.Events");
+            DropTable("dbo.EventResponses");
             DropTable("dbo.Weeks");
             DropTable("dbo.Volunteers");
-            DropTable("dbo.Requests");
             DropTable("dbo.Programs");
             DropTable("dbo.Availabilities");
             DropTable("dbo.Agencies");
