@@ -206,9 +206,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Key.cs" />
-    <Compile Include="Migrations\201807280139015_initial.cs" />
-    <Compile Include="Migrations\201807280139015_initial.Designer.cs">
-      <DependentUpon>201807280139015_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201807301510108_initial.cs" />
+    <Compile Include="Migrations\201807301510108_initial.Designer.cs">
+      <DependentUpon>201807301510108_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807301512222_addingViewModel.cs" />
+    <Compile Include="Migrations\201807301512222_addingViewModel.Designer.cs">
+      <DependentUpon>201807301512222_addingViewModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -217,6 +221,7 @@
     <Compile Include="Models\Availability.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\EventResponse.cs" />
+    <Compile Include="Models\EventViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Mail.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -354,8 +359,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807280139015_initial.resx">
-      <DependentUpon>201807280139015_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807301510108_initial.resx">
+      <DependentUpon>201807301510108_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807301512222_addingViewModel.resx">
+      <DependentUpon>201807301512222_addingViewModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

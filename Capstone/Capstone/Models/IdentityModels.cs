@@ -39,6 +39,7 @@ namespace Capstone.Models
         public DbSet<Volunteer> Volunteers { get; set; }
         public DbSet<EventResponse> EventResponses { get; set; }
         public DbSet<Event> Events { get; set; }
+        public DbSet<EventViewModel> EventViewModels { get; set; }
         public DbSet<Availability> Availabilities { get; set; }
         public DbSet<Agency> Agencies { get; set; }
         public DbSet<Student> Students { get; set; }

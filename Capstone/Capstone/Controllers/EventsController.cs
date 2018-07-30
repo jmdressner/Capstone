@@ -17,8 +17,7 @@ namespace Capstone.Controllers
         // GET: Events
         public ActionResult Index()
         {
-            var events = db.Events.Include(e => e.Admin).Include(e => e.EventResponse).Include(e => e.Volunteer);
-            return View(events.ToList());
+            return View(db.Events.ToList());
         }
 
         // GET: Events/Details/5
@@ -39,9 +38,6 @@ namespace Capstone.Controllers
         // GET: Events/Create
         public ActionResult Create()
         {
-            ViewBag.AdminID = new SelectList(db.Admins, "ID", "Name");
-            ViewBag.ResponseID = new SelectList(db.EventResponses, "ID", "Response");
-            ViewBag.VolunteerID = new SelectList(db.Volunteers, "ID", "Name");
             return View();
         }
 
@@ -50,7 +46,7 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,AdminID,VolunteerID,Date,Time,Location,Occasion,Description,ResponseID")] Event @event)
+        public ActionResult Create([Bind(Include = "ID,Date,Time,Location,Occasion,Description")] Event @event)
         {
             if (ModelState.IsValid)
             {
@@ -59,9 +55,6 @@ namespace Capstone.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AdminID = new SelectList(db.Admins, "ID", "Name", @event.AdminID);
-            ViewBag.ResponseID = new SelectList(db.EventResponses, "ID", "Response", @event.ResponseID);
-            ViewBag.VolunteerID = new SelectList(db.Volunteers, "ID", "Name", @event.VolunteerID);
             return View(@event);
         }
 
@@ -77,9 +70,6 @@ namespace Capstone.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AdminID = new SelectList(db.Admins, "ID", "Name", @event.AdminID);
-            ViewBag.ResponseID = new SelectList(db.EventResponses, "ID", "Response", @event.ResponseID);
-            ViewBag.VolunteerID = new SelectList(db.Volunteers, "ID", "Name", @event.VolunteerID);
             return View(@event);
         }
 
@@ -88,7 +78,7 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,AdminID,VolunteerID,Date,Time,Location,Occasion,Description,ResponseID")] Event @event)
+        public ActionResult Edit([Bind(Include = "ID,Date,Time,Location,Occasion,Description")] Event @event)
         {
             if (ModelState.IsValid)
             {
@@ -96,9 +86,6 @@ namespace Capstone.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AdminID = new SelectList(db.Admins, "ID", "Name", @event.AdminID);
-            ViewBag.ResponseID = new SelectList(db.EventResponses, "ID", "Response", @event.ResponseID);
-            ViewBag.VolunteerID = new SelectList(db.Volunteers, "ID", "Name", @event.VolunteerID);
             return View(@event);
         }
 

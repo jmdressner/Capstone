@@ -164,22 +164,13 @@ namespace Capstone.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        AdminID = c.Int(),
-                        VolunteerID = c.Int(),
                         Date = c.DateTime(nullable: false),
                         Time = c.String(),
                         Location = c.String(),
                         Occasion = c.String(),
                         Description = c.String(),
-                        ResponseID = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Admins", t => t.AdminID)
-                .ForeignKey("dbo.EventResponses", t => t.ResponseID, cascadeDelete: true)
-                .ForeignKey("dbo.Volunteers", t => t.VolunteerID)
-                .Index(t => t.AdminID)
-                .Index(t => t.VolunteerID)
-                .Index(t => t.ResponseID);
+                .PrimaryKey(t => t.ID);
             
             CreateTable(
                 "dbo.Requests",
@@ -235,9 +226,6 @@ namespace Capstone.Migrations
             DropForeignKey("dbo.Students", "AgencyID", "dbo.Agencies");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Requests", "VolunteerID", "dbo.Volunteers");
-            DropForeignKey("dbo.Events", "VolunteerID", "dbo.Volunteers");
-            DropForeignKey("dbo.Events", "ResponseID", "dbo.EventResponses");
-            DropForeignKey("dbo.Events", "AdminID", "dbo.Admins");
             DropForeignKey("dbo.Availabilities", "DayID", "dbo.Weeks");
             DropForeignKey("dbo.Availabilities", "VolunteerID", "dbo.Volunteers");
             DropForeignKey("dbo.Volunteers", "ApplicationUserID", "dbo.AspNetUsers");
@@ -251,9 +239,6 @@ namespace Capstone.Migrations
             DropIndex("dbo.Students", new[] { "AgencyID" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Requests", new[] { "VolunteerID" });
-            DropIndex("dbo.Events", new[] { "ResponseID" });
-            DropIndex("dbo.Events", new[] { "VolunteerID" });
-            DropIndex("dbo.Events", new[] { "AdminID" });
             DropIndex("dbo.Volunteers", new[] { "ApplicationUserID" });
             DropIndex("dbo.Availabilities", new[] { "ServiceID" });
             DropIndex("dbo.Availabilities", new[] { "DayID" });
