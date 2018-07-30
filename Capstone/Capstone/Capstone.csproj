@@ -198,6 +198,7 @@
     <Compile Include="Controllers\AdminsController.cs" />
     <Compile Include="Controllers\AvailabilitiesController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\EventViewModelsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
@@ -341,6 +342,11 @@
     <Content Include="Views\Events\Details.cshtml" />
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\EventViewModels\Create.cshtml" />
+    <Content Include="Views\EventViewModels\Delete.cshtml" />
+    <Content Include="Views\EventViewModels\Details.cshtml" />
+    <Content Include="Views\EventViewModels\Edit.cshtml" />
+    <Content Include="Views\EventViewModels\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
