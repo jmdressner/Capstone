@@ -20,6 +20,12 @@ namespace Capstone.Controllers
             return View(db.Events.ToList());
         }
 
+        public ActionResult AttendanceIndex(int? id)
+        {
+            var eventViewModels = db.EventViewModels.Include(e => e.Admin).Include(e => e.Event).Include(e => e.EventResponse).Include(e => e.Volunteer).Where(e => e.EventID == id).ToList();
+            return View(eventViewModels);
+        }
+
         // GET: Events/Details/5
         public ActionResult Details(int? id)
         {

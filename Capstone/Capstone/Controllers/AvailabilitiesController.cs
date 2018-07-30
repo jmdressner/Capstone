@@ -183,7 +183,7 @@ namespace Capstone.Controllers
             else
             {
                 var volunteer = db.Volunteers.Where(v => v.ApplicationUserID == currentUserId).FirstOrDefault();
-                var availabilities = db.Availabilities.Include(a => a.Admin).Include(a => a.Volunteer).Include(a => a.Week).Include(a => a.Program).Where(a => a.VolunteerID == volunteer.ID).OrderBy(a => a.DayID).ToList();
+                var availabilities = db.Availabilities.Include(a => a.Admin).Include(a => a.Volunteer).Include(a => a.Week).Include(a => a.Program).Where(a => a.VolunteerID == volunteer.ID && a.VolunteerStatus == true).OrderBy(a => a.DayID).ToList();
                 return View(availabilities);
             }  
         }

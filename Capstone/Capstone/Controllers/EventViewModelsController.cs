@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Capstone.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Capstone.Controllers
 {
@@ -17,8 +18,19 @@ namespace Capstone.Controllers
         // GET: EventViewModels
         public ActionResult Index()
         {
-            var eventViewModels = db.EventViewModels.Include(e => e.Admin).Include(e => e.Event).Include(e => e.EventResponse).Include(e => e.Volunteer);
-            return View(eventViewModels.ToList());
+            var currentUserId = User.Identity.GetUserId();
+            if (User.IsInRole("Admin"))
+            {
+                var admin = db.Admins.Where(a => a.ApplicationUserID == currentUserId).FirstOrDefault();
+                var eventViewModels = db.EventViewModels.Include(e => e.Admin).Include(e => e.Event).Include(e => e.EventResponse).Include(e => e.Volunteer).Where(e => e.AdminID == admin.ID).ToList();
+                return View(eventViewModels);
+            }
+            else
+            {
+                var volunteer = db.Volunteers.Where(a => a.ApplicationUserID == currentUserId).FirstOrDefault();
+                var eventViewModels = db.EventViewModels.Include(e => e.Admin).Include(e => e.Event).Include(e => e.EventResponse).Include(e => e.Volunteer).Where(e => e.VolunteerID == volunteer.ID).ToList();
+                return View(eventViewModels);
+            }
         }
 
         // GET: EventViewModels/Details/5
@@ -40,9 +52,10 @@ namespace Capstone.Controllers
         public ActionResult Create()
         {
             ViewBag.AdminID = new SelectList(db.Admins, "ID", "Name");
-            ViewBag.EventID = new SelectList(db.Events, "ID", "Time");
-            ViewBag.ResponseID = new SelectList(db.EventResponses, "ID", "Response");
             ViewBag.VolunteerID = new SelectList(db.Volunteers, "ID", "Name");
+            ViewBag.EventID = new SelectList(db.Events, "ID", "Occasion");
+            ViewBag.ResponseID = new SelectList(db.EventResponses, "ID", "Response");
+           
             return View();
         }
 
@@ -53,6 +66,18 @@ namespace Capstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,AdminID,VolunteerID,EventID,ResponseID")] EventViewModel eventViewModel)
         {
+            var currentUserId = User.Identity.GetUserId();
+            if (User.IsInRole("Admin"))
+            {
+                var admin = db.Admins.Where(a => a.ApplicationUserID == currentUserId).FirstOrDefault();
+                eventViewModel.AdminID = admin.ID;
+            }
+            else
+            {
+                var volunteer = db.Volunteers.Where(a => a.ApplicationUserID == currentUserId).FirstOrDefault();
+                eventViewModel.VolunteerID = volunteer.ID;
+            }
+
             if (ModelState.IsValid)
             {
                 db.EventViewModels.Add(eventViewModel);
@@ -61,9 +86,10 @@ namespace Capstone.Controllers
             }
 
             ViewBag.AdminID = new SelectList(db.Admins, "ID", "Name", eventViewModel.AdminID);
-            ViewBag.EventID = new SelectList(db.Events, "ID", "Time", eventViewModel.EventID);
-            ViewBag.ResponseID = new SelectList(db.EventResponses, "ID", "Response", eventViewModel.ResponseID);
             ViewBag.VolunteerID = new SelectList(db.Volunteers, "ID", "Name", eventViewModel.VolunteerID);
+            ViewBag.EventID = new SelectList(db.Events, "ID", "Occasion", eventViewModel.EventID);
+            ViewBag.ResponseID = new SelectList(db.EventResponses, "ID", "Response", eventViewModel.ResponseID);
+            
             return View(eventViewModel);
         }
 
@@ -80,9 +106,10 @@ namespace Capstone.Controllers
                 return HttpNotFound();
             }
             ViewBag.AdminID = new SelectList(db.Admins, "ID", "Name", eventViewModel.AdminID);
-            ViewBag.EventID = new SelectList(db.Events, "ID", "Time", eventViewModel.EventID);
-            ViewBag.ResponseID = new SelectList(db.EventResponses, "ID", "Response", eventViewModel.ResponseID);
             ViewBag.VolunteerID = new SelectList(db.Volunteers, "ID", "Name", eventViewModel.VolunteerID);
+            ViewBag.EventID = new SelectList(db.Events, "ID", "Occasion", eventViewModel.EventID);
+            ViewBag.ResponseID = new SelectList(db.EventResponses, "ID", "Response", eventViewModel.ResponseID);
+            
             return View(eventViewModel);
         }
 
@@ -100,9 +127,10 @@ namespace Capstone.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.AdminID = new SelectList(db.Admins, "ID", "Name", eventViewModel.AdminID);
-            ViewBag.EventID = new SelectList(db.Events, "ID", "Time", eventViewModel.EventID);
-            ViewBag.ResponseID = new SelectList(db.EventResponses, "ID", "Response", eventViewModel.ResponseID);
             ViewBag.VolunteerID = new SelectList(db.Volunteers, "ID", "Name", eventViewModel.VolunteerID);
+            ViewBag.EventID = new SelectList(db.Events, "ID", "Occasion", eventViewModel.EventID);
+            ViewBag.ResponseID = new SelectList(db.EventResponses, "ID", "Response", eventViewModel.ResponseID);
+           
             return View(eventViewModel);
         }
 
@@ -113,7 +141,7 @@ namespace Capstone.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EventViewModel eventViewModel = db.EventViewModels.Find(id);
+            EventViewModel eventViewModel = db.EventViewModels.Include(e => e.Admin).Include(e => e.Event).Include(e => e.EventResponse).Include(e => e.Volunteer).Where(e => e.ID == id).FirstOrDefault();
             if (eventViewModel == null)
             {
                 return HttpNotFound();
@@ -140,5 +168,6 @@ namespace Capstone.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }

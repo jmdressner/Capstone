@@ -215,6 +215,10 @@
     <Compile Include="Migrations\201807301512222_addingViewModel.Designer.cs">
       <DependentUpon>201807301512222_addingViewModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807301748562_changeEventModel.cs" />
+    <Compile Include="Migrations\201807301748562_changeEventModel.Designer.cs">
+      <DependentUpon>201807301748562_changeEventModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -344,9 +348,9 @@
     <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\EventViewModels\Create.cshtml" />
     <Content Include="Views\EventViewModels\Delete.cshtml" />
-    <Content Include="Views\EventViewModels\Details.cshtml" />
     <Content Include="Views\EventViewModels\Edit.cshtml" />
     <Content Include="Views\EventViewModels\Index.cshtml" />
+    <Content Include="Views\Events\AttendanceIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -370,6 +374,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807301512222_addingViewModel.resx">
       <DependentUpon>201807301512222_addingViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807301748562_changeEventModel.resx">
+      <DependentUpon>201807301748562_changeEventModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

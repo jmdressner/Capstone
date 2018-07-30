@@ -1,27 +1,21 @@
 ﻿@model IEnumerable<Capstone.Models.EventViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "AttendanceIndex";
 }
 
-<h2>My Event Attendance</h2>
+<h2>Event Attendance</h2>
 
-<p>
-    @Html.ActionLink("Sign Up", "Create")
-</p>
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
 <table class="table">
     <tr>
         <th>
-            @if (User.IsInRole("Admin"))
-            {
-                @Html.DisplayNameFor(model => model.Admin.Name)
-            }
+            @Html.DisplayNameFor(model => model.Admin.Name)
         </th>
         <th>
-            @if (User.IsInRole("Volunteer"))
-            {
-                @Html.DisplayNameFor(model => model.Volunteer.Name)
-            }
+            @Html.DisplayNameFor(model => model.Volunteer.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Event.Occasion)
@@ -35,16 +29,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @if (User.IsInRole("Admin"))
-            {
-                @Html.DisplayFor(modelItem => item.Admin.Name)
-            }
+            @Html.DisplayFor(modelItem => item.Admin.Name)
         </td>
         <td>
-            @if (User.IsInRole("Volunteer"))
-            {
-                @Html.DisplayFor(modelItem => item.Volunteer.Name)
-            }
+            @Html.DisplayFor(modelItem => item.Volunteer.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Event.Occasion)
@@ -52,11 +40,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.EventResponse.Response)
         </td>
-        <td>
+        @*<td>
             @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-            
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-        </td>
+        </td>*@
     </tr>
 }
 

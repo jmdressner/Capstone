@@ -4,16 +4,19 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Events</h2>
 
 <p>
     @if (User.IsInRole("Admin"))
     {
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Add Event", "Create")
     }
 </p>
 <p>
-    @Html.ActionLink("Sign Up", "Index", "EventViewModels")
+    @if (User.IsInRole("Admin") || (User.IsInRole("Volunteer")))
+    {
+        @Html.ActionLink("Sign Up", "Index", "EventViewModels")
+    }
 </p>
 <table class="table">
     <tr>
@@ -57,7 +60,8 @@
             {
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID })<br>
                 @Html.ActionLink("Details", "Details", new { id = item.ID })<br>
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })<br>
+                @Html.ActionLink("View Attendance", "AttendanceIndex", new { id = item.ID })
             }
         </td>
     </tr>
