@@ -20,7 +20,7 @@ namespace Capstone.Models
         [Display(Name = "Country of Origin")]
         public string Country { get; set; }
         [Display(Name = "Date of Arrival")]
-        public DateTime DateOfArrival { get; set; }
+        public string DateOfArrival { get; set; }
 
         [ForeignKey("Agency")]
         [Display(Name = "Settlement Agency")]
@@ -30,7 +30,7 @@ namespace Capstone.Models
         public IEnumerable<Agency> Agencies { get; set; }
 
         [Display(Name = "Date of Registration")]
-        public DateTime DateOfRegistration { get; set; }
+        public string DateOfRegistration { get; set; }
 
         [ForeignKey("Program")]
         [Display(Name = "Services used")]

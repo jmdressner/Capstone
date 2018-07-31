@@ -4,104 +4,130 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Students</h2>
-
-<p>
-    @Html.ActionLink("Add Student", "Create")
-</p>
-
-<div>
-    @using (Html.BeginForm())
-    {
-        <p>
-            
-            Heading: @Html.TextBox("heading")
-            Find by: @Html.TextBox("searchString")
-            <input type="submit" value="Search"/>
-        </p>
-    }
+<br />
+<div class="container" style="background-color: khaki">
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            <img src="~/images/GPAClass.jpg" style="width:100%; height:auto;" />
+        </div>
+        <div class="col-md-2">
+            <img src="~/images/LaurenTable.jpg" style="width:100%; height:auto"/>
+        </div>
+        <div class="col-md-2">
+            <img src="~/images/MarciaTable.jpg" style="width:100%; height:auto"/>
+        </div>
+        <div class="col-md-2">
+            <img src="~/images/MustafaAhmed.jpg" style="width:100%; height:auto"/>
+        </div>
+        <div class="col-md-2">
+            <img src="~/images/TomClass.jpg" style="width:100%; height:auto"/>
+        </div>
+        <div class="col-md-2">
+            <img src="~/images/WendyClass.jpg" style="width:100%; height:auto"/>
+        </div>
+    </div>
+    <br />
 </div>
- 
-    <table class="table">
-        <tr>
-            <th>
-                @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
-            </th>
-            <th>
-                @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm })
-            </th>
-            <th>
-                @Html.ActionLink("Phone", "Index", new { sortOrder = ViewBag.PhoneSortParm })
-            </th>
-            <th>
-                @Html.ActionLink("Address", "Index", new { sortOrder = ViewBag.AddressSortParm })
-            </th>
-            <th>
-                @Html.ActionLink("Zipcode", "Index", new { sortOrder = ViewBag.ZipcodeSortParm })
-            </th>
-            <th>
-                @Html.ActionLink("Country", "Index", new { sortOrder = ViewBag.CountrySortParm })
-            </th>
-            <th>
-                @Html.ActionLink("Date of Arrival", "Index", new { sortOrder = ViewBag.DateASortParm })
-            </th>
-            <th>
-                @Html.ActionLink("Settlement Agency", "Index", new { sortOrder = ViewBag.AgencySortParm })
-            </th>
-            <th>
-                @Html.ActionLink("Date of Registration", "Index", new { sortOrder = ViewBag.DateRSortParm })
-            </th>
-            <th>
-                @Html.ActionLink("Service", "Index", new { sortOrder = ViewBag.ServiceSortParm })
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Bio)
-            </th>
-            <th></th>
-        </tr>
+<br />
+            <h2>Students</h2>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Phone)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Zipcode)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Country)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateOfArrival)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Agency.Settlement)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateOfRegistration)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Program.Service)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Bio)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                </td>
-            </tr>
-        }
+            <p>
+                @Html.ActionLink("Add Student", "Create")
+            </p>
 
-    </table>
+            <div>
+                @using (Html.BeginForm())
+                {
+                    <p>
+
+                        Heading: @Html.TextBox("heading")
+                        Find by: @Html.TextBox("searchString")
+                        <input type="submit" value="Search" />
+                    </p>
+                }
+            </div>
+
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+                    </th>
+                    <th>
+                        @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.EmailSortParm })
+                    </th>
+                    <th>
+                        @Html.ActionLink("Phone", "Index", new { sortOrder = ViewBag.PhoneSortParm })
+                    </th>
+                    <th>
+                        @Html.ActionLink("Address", "Index", new { sortOrder = ViewBag.AddressSortParm })
+                    </th>
+                    <th>
+                        @Html.ActionLink("Zipcode", "Index", new { sortOrder = ViewBag.ZipcodeSortParm })
+                    </th>
+                    <th>
+                        @Html.ActionLink("Country", "Index", new { sortOrder = ViewBag.CountrySortParm })
+                    </th>
+                    <th>
+                        @Html.ActionLink("Date of Arrival", "Index", new { sortOrder = ViewBag.DateASortParm })
+                    </th>
+                    <th>
+                        @Html.ActionLink("Settlement Agency", "Index", new { sortOrder = ViewBag.AgencySortParm })
+                    </th>
+                    <th>
+                        @Html.ActionLink("Date of Registration", "Index", new { sortOrder = ViewBag.DateRSortParm })
+                    </th>
+                    <th>
+                        @Html.ActionLink("Service", "Index", new { sortOrder = ViewBag.ServiceSortParm })
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Bio)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Zipcode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Country)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateOfArrival)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Agency.Settlement)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateOfRegistration)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Program.Service)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Bio)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                        </td>
+                    </tr>
+                }
+
+            </table>

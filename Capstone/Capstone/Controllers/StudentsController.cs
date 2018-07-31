@@ -24,9 +24,9 @@ namespace Capstone.Controllers
             ViewBag.AddressSortParm = String.IsNullOrEmpty(sortOrder) ? "address_asc" : "";
             ViewBag.ZipcodeSortParm = String.IsNullOrEmpty(sortOrder) ? "zipcode_asc" : "";
             ViewBag.CountrySortParm = String.IsNullOrEmpty(sortOrder) ? "country_asc" : "";
-            ViewBag.DateASortParm = sortOrder == "DateOfArrival" ? "dateA_asc" : "DateOfArrival";
+            ViewBag.DateASortParm = String.IsNullOrEmpty(sortOrder) ? "dateA_asc" : "";
             ViewBag.AgencySortParm = String.IsNullOrEmpty(sortOrder) ? "agency_asc" : "";
-            ViewBag.DateRSortParm = sortOrder == "DateOfRegistration" ? "dateR_asc" : "DateOfRegistration";
+            ViewBag.DateRSortParm = String.IsNullOrEmpty(sortOrder) ? "dateR_asc" : "";
             ViewBag.ServiceSortParm = String.IsNullOrEmpty(sortOrder) ? "service_asc" : "";
 
             var students = db.Students.Include(s => s.Agency).Include(s => s.Program).Select(s => s);
@@ -80,8 +80,7 @@ namespace Capstone.Controllers
                     case "Date of Arrival":
                         if (!String.IsNullOrEmpty(searchString))
                         {
-                            var testDate = Convert.ToDateTime(searchString);
-                            students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.DateOfArrival.Equals(testDate));
+                            students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.DateOfArrival.Equals(searchString));
                             return View(students);
                         }
                         break;
@@ -95,8 +94,7 @@ namespace Capstone.Controllers
                     case "Date of Registration":
                         if (!String.IsNullOrEmpty(searchString))
                         {
-                            var testDate = Convert.ToDateTime(searchString);
-                            students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.DateOfRegistration.Equals(testDate));
+                            students = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.DateOfRegistration.Equals(searchString));
                             return View(students);
                         }
                         break;
@@ -145,17 +143,11 @@ namespace Capstone.Controllers
                 case "country_asc":
                     students = db.Students.Include(s => s.Agency).Include(s => s.Program).OrderBy(s => s.Country);
                     break;
-                case "DateOfArrival":
-                    students = db.Students.Include(s => s.Agency).Include(s => s.Program).OrderBy(s => s.DateOfArrival);
-                    break;
                 case "dateA_asc":
                     students = db.Students.Include(s => s.Agency).Include(s => s.Program).OrderBy(s => s.DateOfArrival);
                     break;
                 case "agency_asc":
                     students = db.Students.Include(s => s.Agency).Include(s => s.Program).OrderBy(s => s.Agency.Settlement);
-                    break;
-                case "DateofRegistration":
-                    students = db.Students.Include(s => s.Agency).Include(s => s.Program).OrderBy(s => s.DateOfRegistration);
                     break;
                 case "dateR_asc":
                     students = db.Students.Include(s => s.Agency).Include(s => s.Program).OrderBy(s => s.DateOfRegistration);
