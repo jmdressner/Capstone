@@ -4,16 +4,28 @@
     ViewBag.Title = "ScheduleCreate";
 }
 
-<h2>Schedule</h2>
+<style>
+    .indented {
+        padding-left: 15pt;
+        padding-right: 15pt;
+    }
+</style>
 
-<p>
+<div style="background-color: khaki">
+    <br />
+    <center><h2><strong>Schedule</strong></h2></center>
+    <br />
+</div>
+
+<h4><strong>
     @if (User.IsInRole("Admin"))
     {
         @Html.ActionLink("View Availability", "ScheduleIndex", "Availabilities")
-        <br />
+        <a class="indented">
         @Html.ActionLink("View Request Off", "RequestOffIndex", "Volunteers")
+        </a>
      }
-</p>
+</strong></h4>
 <table class="table">
     <tr>
         @if (User.IsInRole("Admin"))

@@ -2,19 +2,23 @@
 @{
     ViewBag.Title = "Contact";
 }
+<div style="background-color: khaki">
 <br />
-
-<h3><strong>Contact for more Information</strong></h3>
+<center><h3><strong>Contact for more Information</strong></h3></center>
 <br />
-<address>
+</div>
+<br />
+<center><address>
     <strong>Director:</strong>   <a href="mailto:ilctmilwaukee@gmail.com">ilctmilwaukee@gmail.com</a>
-</address>
+</address></center>
 
+<div>
 @using (Html.BeginForm("Contact", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @id = "contact-form", role = "form" }))
 {
     @Html.ValidationSummary()
+    <center>
     <fieldset>
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <div class="form-div-1">
                 <label class="name">
                     @Html.TextBoxFor(m => m.Name, new { @placeholder = "Name *", @type = "text" })
@@ -45,4 +49,6 @@
             </div>
         </div>
     </fieldset>
+    </center>
 }
+</div>

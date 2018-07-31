@@ -4,11 +4,15 @@
     ViewBag.Title = "Index";
 }
 
-<h2>My Event Attendance</h2>
+<div style="background-color: khaki">
+    <br />
+    <center><h2><strong>My Event Attendance</strong></h2></center>
+    <br />
+</div>
 
-<p>
+<h4><strong>
     @Html.ActionLink("Sign Up", "Create")
-</p>
+</strong></h4>
 <table class="table">
     <tr>
         <th>
@@ -62,6 +66,6 @@
 
 </table>
 
-<p>
+<p><strong>
     @Html.ActionLink("Back to Events", "Index", "Events")
-</p>
+</strong></p>

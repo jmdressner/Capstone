@@ -4,10 +4,20 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Profile</h2>
+<style>
+    .indented {
+        padding-left: 50pt;
+        padding-right: 50pt;
+    }
+</style>
+
+<div style="background-color: khaki">
+    <br />
+    <h2 class="indented"><strong>Profile</strong></h2>
+    <br />
+</div>
 
 <div>
-    <br />
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -77,6 +87,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
     @*@Html.ActionLink("Back to List", "Index")*@
 </p>

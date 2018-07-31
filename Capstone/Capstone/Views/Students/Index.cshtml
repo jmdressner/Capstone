@@ -30,23 +30,23 @@
     <br />
 </div>
 <br />
-            <h2>Students</h2>
-
-            <p>
-                @Html.ActionLink("Add Student", "Create")
-            </p>
-
-            <div>
+            <center><h2><strong>Students</strong></h2></center>
+            <br />
+            <center><div>
                 @using (Html.BeginForm())
                 {
-                    <p>
+                <p>
 
-                        Heading: @Html.TextBox("heading")
-                        Find by: @Html.TextBox("searchString")
-                        <input type="submit" value="Search" />
-                    </p>
+                    Heading: @Html.TextBox("heading")
+                    Find by: @Html.TextBox("searchString")
+                    <input type="submit" value="Search" />
+                    <h4 align="right"><strong>
+                        @Html.ActionLink("Add Student", "Create")
+                    </strong></h4>
+                </p>
                 }
-            </div>
+                    
+            </div></center>
 
             <table class="table">
                 <tr>

@@ -4,11 +4,25 @@
     ViewBag.Title = "ScheduleIndex";
 }
 
-<h2>All Availability</h2>
+<div style="background-color: khaki">
+    <br />
+    <center><h2><strong>All Availability</strong></h2></center>
+    <br />
+</div>
+<br />
 
-<p>
+<style>
+    .indented {
+        padding-left: 25pt;
+        padding-right: 25pt;
+    }
+</style>
+<h4><strong>
     @Html.ActionLink("Create New Schedule", "ScheduleCreate")
-</p>
+    <a class="indented">
+    @Html.ActionLink("Add My Availability", "Index", "Availabilities")
+    </a>
+</strong></h4>
 <table class="table">
     <tr>
         @*<a href="~/Views/Availabilities/ScheduleIndex.cshtml">~/Views/Availabilities/ScheduleIndex.cshtml</a>*@
@@ -57,6 +71,3 @@
 
 </table>
 
-<div>
-    @Html.ActionLink("Add My Availability", "Index", "Availabilities")
-</div>

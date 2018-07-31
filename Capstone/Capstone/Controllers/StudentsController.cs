@@ -170,7 +170,7 @@ namespace Capstone.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Student student = db.Students.Find(id);
+            Student student = db.Students.Include(s => s.Agency).Include(s => s.Program).Where(s => s.ID == id).FirstOrDefault();
             if (student == null)
             {
                 return HttpNotFound();

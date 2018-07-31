@@ -4,11 +4,16 @@
     ViewBag.Title = "RequestOffIndex";
 }
 
-<h2>Request Off</h2>
+<div style="background-color: khaki">
+    <br />
+    <center><h2><strong>Request Off</strong></h2></center>
+    <br />
+</div>
+<br />
 
-<p>
+<h4><strong>
     @Html.ActionLink("Add Request", "RequestOffCreate")
-</p>
+</strong></h4>
 <table class="table">
     <tr>
         <th>
@@ -54,9 +59,9 @@
 
 </table>
 
-<div>
+<div><strong>
     @if (User.IsInRole("Admin"))
     {
         @Html.ActionLink("Back to Schedule", "ScheduleCreate", "Availabilities")
     }
-</div>
+</strong></div>

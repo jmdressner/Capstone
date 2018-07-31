@@ -3,12 +3,16 @@
 @{
     ViewBag.Title = "Index";
 }
+<div style="background-color: khaki">
+<br />
+    <center><h2><strong>My Availability</strong></h2></center>
+<br />
+</div>
 
-<h2>My Availability</h2>
 
-<p>
+<h4><strong>
     @Html.ActionLink("Add Day", "Create")
-</p>
+</strong></h4>
 <table class="table">
     <tr>
         @if (User.IsInRole("Admin"))
@@ -69,9 +73,9 @@
 </table>
 
 <br />
-<div>
+<div><strong>
     @if (User.IsInRole("Admin"))
     {
         @Html.ActionLink("Back to All Availability", "ScheduleIndex", "Availabilities")
     }
-</div>
+</strong></div>

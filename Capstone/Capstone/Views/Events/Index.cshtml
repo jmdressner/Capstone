@@ -3,21 +3,30 @@
 @{
     ViewBag.Title = "Index";
 }
+<div style="background-color: khaki">
+<br />
+<center><h2><strong>Events</strong></h2></center>
+<br />
+</div>
+<style>
+    .indented {
+        padding-left: 355pt;
+        padding-right: 355pt;
+    }
+</style>
 
-<h2>Events</h2>
-
-<p>
+<h4><strong>
     @if (User.IsInRole("Admin"))
     {
         @Html.ActionLink("Add Event", "Create")
     }
-</p>
-<p>
+   <a class="indented">
     @if (User.IsInRole("Admin") || (User.IsInRole("Volunteer")))
     {
         @Html.ActionLink("Sign Up", "Index", "EventViewModels")
     }
-</p>
+    </a>
+</strong></h4>
 <table class="table">
     <tr>
         <th>
