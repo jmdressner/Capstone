@@ -19,31 +19,32 @@
     <center>
     <fieldset>
         <div class="col-lg-12">
-            <div class="form-div-1">
+            <div class="form-div-1; input-lg">
                 <label class="name">
                     @Html.TextBoxFor(m => m.Name, new { @placeholder = "Name *", @type = "text" })
                 </label>
             </div>
-            <div class="form-div-2">
+            <div class="form-div-2; input-lg">
                 <label class="email">
                     @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email Address *", @type = "email" })
                 </label>
             </div>
-            <div class="form-div-2">
+            <div class="form-div-2; input-lg">
                 <label class="email">
                     @Html.TextBoxFor(m => m.EmailPassword, new { @placeholder = "Email Password *", @type = "password" })
                 </label>
             </div>
-            <div class="form-div-3">
+            <div class="form-div-3; input-lg">
                 <label class="phone">
                     @Html.TextBoxFor(m => m.Subject, new { @placeholder = "Subject", @type = "text" })
                 </label>
             </div>
             <div>
-                <label class="message">
+                <label class="message; input-lg">
                     @Html.TextAreaFor(m => m.Message, new { @placeholder = "Message *" })
                 </label>
             </div>
+            <br />
             <div class="button-wrapper">
                 <input type="submit" value="Send" name="submit" class="button"> <input type="reset" value="Reset" name="MFReset" class="button"><span>* Required Fields</span>
             </div>
