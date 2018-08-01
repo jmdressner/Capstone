@@ -20,13 +20,13 @@ namespace Capstone.Controllers
             if(User.IsInRole("Admin"))
             {
                 var admin = db.Admins.Where(a => a.ApplicationUserID == currentUserId).FirstOrDefault();
-                var availabilities = db.Availabilities.Include(a => a.Admin).Include(a => a.Volunteer).Include(a => a.Week).Include(a => a.Program).Where(a => a.AdminID == admin.ID).ToList();
+                var availabilities = db.Availabilities.Include(a => a.Admin).Include(a => a.Volunteer).Include(a => a.Week).Include(a => a.Program).Where(a => a.AdminID == admin.ID).OrderBy(a => a.DayID).ToList();
                 return View(availabilities);
             }
             else
             {
                 var volunteer = db.Volunteers.Where(e => e.ApplicationUserID == currentUserId).FirstOrDefault();
-                var availabilities = db.Availabilities.Include(a => a.Admin).Include(a => a.Volunteer).Include(a => a.Week).Include(a => a.Program).Where(a => a.VolunteerID == volunteer.ID).ToList();
+                var availabilities = db.Availabilities.Include(a => a.Admin).Include(a => a.Volunteer).Include(a => a.Week).Include(a => a.Program).Where(a => a.VolunteerID == volunteer.ID).OrderBy(a => a.DayID).ToList();
                 return View(availabilities);
             }
         }

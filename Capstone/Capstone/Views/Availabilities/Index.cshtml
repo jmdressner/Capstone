@@ -9,9 +9,21 @@
 <br />
 </div>
 
+<style>
+    .indented {
+        padding-left: 360pt;
+        padding-right: 360pt;
+    }
+</style>
 
 <h4><strong>
     @Html.ActionLink("Add Day", "Create")
+    <a class="indented">
+    @if (User.IsInRole("Volunteer"))
+    {
+        @Html.ActionLink("Request Off", "RequestOffIndex", "Volunteers")
+    }
+    </a>
 </strong></h4>
 <table class="table">
     <tr>

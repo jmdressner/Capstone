@@ -12,7 +12,10 @@
 <br />
 
 <h4><strong>
-    @Html.ActionLink("Add Request", "RequestOffCreate")
+    @if (User.IsInRole("Volunteer"))
+    {
+        @Html.ActionLink("Add Request", "RequestOffCreate")
+    }
 </strong></h4>
 <table class="table">
     <tr>
@@ -59,9 +62,13 @@
 
 </table>
 
-<div><strong>
+<div><h4><strong>
     @if (User.IsInRole("Admin"))
     {
         @Html.ActionLink("Back to Schedule", "ScheduleCreate", "Availabilities")
     }
-</strong></div>
+    @if (User.IsInRole("Volunteer"))
+    {
+        @Html.ActionLink("Back to My Availability", "Index", "Availabilities")
+    }
+</strong></h4></div>
