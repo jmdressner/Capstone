@@ -11,7 +11,7 @@ namespace Capstone.Models
     {
         [Key]
         public int ID { get; set; }
-        [Display(Name = "Volunteers")]
+        [Display(Name = "Volunteer")]
         public string Name { get; set; }
         public string Email { get; set; }
         [Display(Name ="Phone Number")]

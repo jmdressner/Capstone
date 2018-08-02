@@ -127,7 +127,14 @@ namespace Capstone.Controllers
             {
                 db.Entry(volunteer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Details");
+                if (User.IsInRole("Volunteer"))
+                {
+                    return RedirectToAction("Details");
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
             }
             return View(volunteer);
         }
