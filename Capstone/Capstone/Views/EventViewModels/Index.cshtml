@@ -10,9 +10,11 @@
     <br />
 </div>
 
-<h4><strong>
-    @Html.ActionLink("Sign Up", "Create")
-</strong></h4>
+<h4>
+    <strong>
+        @Html.ActionLink("Sign Up", "Create")
+    </strong>
+</h4>
 <table class="table">
     <tr>
         <th>
@@ -36,36 +38,40 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @if (User.IsInRole("Admin"))
-            {
-                @Html.DisplayFor(modelItem => item.Admin.Name)
-            }
-        </td>
-        <td>
-            @if (User.IsInRole("Volunteer"))
-            {
-                @Html.DisplayFor(modelItem => item.Volunteer.Name)
-            }
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Event.Occasion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EventResponse.Response)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-            
-            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (User.IsInRole("Admin"))
+                {
+                    @Html.DisplayFor(modelItem => item.Admin.Name)
+                }
+            </td>
+            <td>
+                @if (User.IsInRole("Volunteer"))
+                {
+                    @Html.DisplayFor(modelItem => item.Volunteer.Name)
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Event.Occasion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventResponse.Response)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>
 
-<p><strong>
-    @Html.ActionLink("Back to Events", "Index", "Events")
-</strong></p>
+<p>
+    <strong>
+        @Html.ActionLink("Back to Events", "Index", "Events")
+    </strong>
+</p>
+

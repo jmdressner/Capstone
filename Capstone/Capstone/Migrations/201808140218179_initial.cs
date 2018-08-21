@@ -164,13 +164,37 @@ namespace Capstone.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        Date = c.DateTime(nullable: false),
-                        Time = c.String(),
-                        Location = c.String(),
+                        StartDate = c.DateTime(nullable: false),
+                        EndDate = c.DateTime(),
+                        StartTime = c.String(),
+                        EndTime = c.String(),
                         Occasion = c.String(),
+                        Location = c.String(),
                         Description = c.String(),
+                        ThemeColor = c.String(),
+                        IsFullDay = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.ID);
+            
+            CreateTable(
+                "dbo.EventViewModels",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        AdminID = c.Int(),
+                        VolunteerID = c.Int(),
+                        EventID = c.Int(nullable: false),
+                        ResponseID = c.Int(),
+                    })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Admins", t => t.AdminID)
+                .ForeignKey("dbo.Events", t => t.EventID, cascadeDelete: true)
+                .ForeignKey("dbo.EventResponses", t => t.ResponseID)
+                .ForeignKey("dbo.Volunteers", t => t.VolunteerID)
+                .Index(t => t.AdminID)
+                .Index(t => t.VolunteerID)
+                .Index(t => t.EventID)
+                .Index(t => t.ResponseID);
             
             CreateTable(
                 "dbo.Requests",
@@ -206,9 +230,9 @@ namespace Capstone.Migrations
                         Address = c.String(),
                         Zipcode = c.String(),
                         Country = c.String(),
-                        DateOfArrival = c.DateTime(nullable: false),
+                        DateOfArrival = c.String(),
                         AgencyID = c.Int(nullable: false),
-                        DateOfRegistration = c.DateTime(nullable: false),
+                        DateOfRegistration = c.String(),
                         ServiceID = c.Int(nullable: false),
                         Bio = c.String(),
                     })
@@ -226,6 +250,10 @@ namespace Capstone.Migrations
             DropForeignKey("dbo.Students", "AgencyID", "dbo.Agencies");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Requests", "VolunteerID", "dbo.Volunteers");
+            DropForeignKey("dbo.EventViewModels", "VolunteerID", "dbo.Volunteers");
+            DropForeignKey("dbo.EventViewModels", "ResponseID", "dbo.EventResponses");
+            DropForeignKey("dbo.EventViewModels", "EventID", "dbo.Events");
+            DropForeignKey("dbo.EventViewModels", "AdminID", "dbo.Admins");
             DropForeignKey("dbo.Availabilities", "DayID", "dbo.Weeks");
             DropForeignKey("dbo.Availabilities", "VolunteerID", "dbo.Volunteers");
             DropForeignKey("dbo.Volunteers", "ApplicationUserID", "dbo.AspNetUsers");
@@ -239,6 +267,10 @@ namespace Capstone.Migrations
             DropIndex("dbo.Students", new[] { "AgencyID" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Requests", new[] { "VolunteerID" });
+            DropIndex("dbo.EventViewModels", new[] { "ResponseID" });
+            DropIndex("dbo.EventViewModels", new[] { "EventID" });
+            DropIndex("dbo.EventViewModels", new[] { "VolunteerID" });
+            DropIndex("dbo.EventViewModels", new[] { "AdminID" });
             DropIndex("dbo.Volunteers", new[] { "ApplicationUserID" });
             DropIndex("dbo.Availabilities", new[] { "ServiceID" });
             DropIndex("dbo.Availabilities", new[] { "DayID" });
@@ -253,6 +285,7 @@ namespace Capstone.Migrations
             DropTable("dbo.Students");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Requests");
+            DropTable("dbo.EventViewModels");
             DropTable("dbo.Events");
             DropTable("dbo.EventResponses");
             DropTable("dbo.Weeks");

@@ -49,6 +49,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Speech" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -207,29 +208,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Key.cs" />
-    <Compile Include="Migrations\201807301510108_initial.cs" />
-    <Compile Include="Migrations\201807301510108_initial.Designer.cs">
-      <DependentUpon>201807301510108_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807301512222_addingViewModel.cs" />
-    <Compile Include="Migrations\201807301512222_addingViewModel.Designer.cs">
-      <DependentUpon>201807301512222_addingViewModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807301748562_changeEventModel.cs" />
-    <Compile Include="Migrations\201807301748562_changeEventModel.Designer.cs">
-      <DependentUpon>201807301748562_changeEventModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807311527524_changingDateTime.cs" />
-    <Compile Include="Migrations\201807311527524_changingDateTime.Designer.cs">
-      <DependentUpon>201807311527524_changingDateTime.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808012041338_volunteerStatusNullable.cs" />
-    <Compile Include="Migrations\201808012041338_volunteerStatusNullable.Designer.cs">
-      <DependentUpon>201808012041338_volunteerStatusNullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808012054563_changedVolunteerStatusBack.cs" />
-    <Compile Include="Migrations\201808012054563_changedVolunteerStatusBack.Designer.cs">
-      <DependentUpon>201808012054563_changedVolunteerStatusBack.cs</DependentUpon>
+    <Compile Include="Migrations\201808140218179_initial.cs" />
+    <Compile Include="Migrations\201808140218179_initial.Designer.cs">
+      <DependentUpon>201808140218179_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -354,16 +335,16 @@
     <Content Include="Views\Home\Videos.cshtml" />
     <Content Include="Views\Home\Questions.cshtml" />
     <Content Include="Views\Home\VolunteerProcess.cshtml" />
-    <Content Include="Views\Events\Create.cshtml" />
-    <Content Include="Views\Events\Delete.cshtml" />
-    <Content Include="Views\Events\Details.cshtml" />
-    <Content Include="Views\Events\Edit.cshtml" />
-    <Content Include="Views\Events\Index.cshtml" />
     <Content Include="Views\EventViewModels\Create.cshtml" />
     <Content Include="Views\EventViewModels\Delete.cshtml" />
     <Content Include="Views\EventViewModels\Edit.cshtml" />
     <Content Include="Views\EventViewModels\Index.cshtml" />
     <Content Include="Views\Events\AttendanceIndex.cshtml" />
+    <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\Events\Edit.cshtml" />
+    <Content Include="Views\Events\Delete.cshtml" />
+    <Content Include="Views\Events\Details.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -382,23 +363,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807301510108_initial.resx">
-      <DependentUpon>201807301510108_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807301512222_addingViewModel.resx">
-      <DependentUpon>201807301512222_addingViewModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807301748562_changeEventModel.resx">
-      <DependentUpon>201807301748562_changeEventModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807311527524_changingDateTime.resx">
-      <DependentUpon>201807311527524_changingDateTime.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808012041338_volunteerStatusNullable.resx">
-      <DependentUpon>201808012041338_volunteerStatusNullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808012054563_changedVolunteerStatusBack.resx">
-      <DependentUpon>201808012054563_changedVolunteerStatusBack.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808140218179_initial.resx">
+      <DependentUpon>201808140218179_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

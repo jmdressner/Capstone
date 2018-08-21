@@ -12,27 +12,35 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.DisplayNameFor(model => model.StartDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Date)
+            @Html.DisplayFor(model => model.StartDate)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Time)
+            @Html.DisplayNameFor(model => model.EndDate)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Time)
+            @Html.DisplayFor(model => model.EndDate)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Location)
+            @Html.DisplayNameFor(model => model.StartTime)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Location)
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
         </dd>
 
         <dt>
@@ -44,11 +52,35 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThemeColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThemeColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsFullDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsFullDay)
         </dd>
 
     </dl>

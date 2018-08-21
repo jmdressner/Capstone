@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Speech.Synthesis;
 using System.Text;
 using System.Threading;
 using System.Web;
@@ -132,6 +133,22 @@ namespace Capstone.Controllers
             return View();
         }
 
+        public ActionResult Speak(string question)
+        {
+            SpeechSynthesizer synth = new SpeechSynthesizer();
+            // Configure the audio output. 
+            synth.SetOutputToWaveFile(question);
+
+            // Create a SoundPlayer instance to play the output audio file.
+            System.Media.SoundPlayer m_SoundPlayer =
+              new System.Media.SoundPlayer(question);
+
+            // Speak the string synchronously and play the output file.
+            synth.Speak(question);
+            m_SoundPlayer.Play();
+
+            return View();
+        }
 
     }
 }

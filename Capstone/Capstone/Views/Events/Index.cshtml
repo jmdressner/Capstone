@@ -4,9 +4,9 @@
     ViewBag.Title = "Index";
 }
 <div style="background-color: khaki">
-<br />
-<center><h2><strong>Events</strong></h2></center>
-<br />
+    <br />
+    <center><h2><strong>Events</strong></h2></center>
+    <br />
 </div>
 <style>
     .indented {
@@ -20,60 +20,192 @@
     {
         @Html.ActionLink("Add Event", "Create")
     }
-   <a class="indented">
-    @if (User.IsInRole("Admin") || (User.IsInRole("Volunteer")))
+    <a class="indented">
+    @if (User.IsInRole("Volunteer") || (User.IsInRole("Admin")))
     {
         @Html.ActionLink("Sign Up", "Index", "EventViewModels")
     }
     </a>
 </strong></h4>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Time)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Occasion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
-    </tr>
+<br />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Time)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Occasion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @if (User.IsInRole("Admin"))
-            {
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID })<br>
-                @Html.ActionLink("Details", "Details", new { id = item.ID })<br>
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })<br>
-                @Html.ActionLink("View Attendance", "AttendanceIndex", new { id = item.ID })
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Occasion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThemeColor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsFullDay)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Occasion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThemeColor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsFullDay)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+
+    </table>*@
+
+<div id="calender"></div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><span id="eventTitle"></span></h4>
+            </div>
+            <div class="modal-body">
+                <p id="pDetails"></p>
+            </div>
+            <div class="modal-footer">
+
+                @foreach (var item in Model)
+                {
+                    if (User.IsInRole("Admin"))
+                    {
+                        
+                            //<a href="javascript:void(0);" class="document" data-id="@item.ID">Edit</a>
+                            @Html.DisplayFor(modelItem => item.Occasion)
+                            <input type="button" value="Edit" onclick="location.href='@Url.Action("Edit", "Events", new { id = item.ID})'" />
+                            <input type="button" value="Delete" onclick="location.href='@Url.Action("Delete", "Events", new { id = item.ID })'" />
+                            <input type="button" value="View Attendance" onclick="location.href='@Url.Action("AttendanceIndex", "Events", new { id = item.ID })'" /><br />
+                        
+                    }
+                }
+                @*<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>*@
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css" rel="stylesheet" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css" rel="stylesheet" media="print" />
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var $buttonClicked = $(this);
+            var id = $buttonClicked.attr('data-id');
+            var events = [];
+            $.ajax({
+                type: "GET",
+                url: "/Events/GetEvents",
+                data: {"Id": id},
+                success: function (data) {
+                    $.each(data, function (i, v) {
+                        events.push({
+                            id: v.Id,
+                            title: v.Occasion,
+                            description: v.Description,
+                            start: moment(v.StartDate),
+                            end: v.EndDate != null ? moment(v.EndDate) : null,
+                            startTime: v.StartTime,
+                            endTime: v.EndTime,
+                            occasion: v.Occasion,
+                            location: v.Location,
+                            color: v.ThemeColor,
+                            allDay: v.IsFullDay
+                        });
+                    })
+
+                    GenerateCalender(events);
+                },
+                error: function (error) {
+                    alert('failed');
+                }
+            })
+
+            function GenerateCalender(events) {
+                $('#calender').fullCalendar('destroy');
+                $('#calender').fullCalendar({
+                    contentHeight: 400,
+                    defaultDate: new Date(),
+                    timeFormat: 'h(:mm)a',
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month,basicWeek,basicDay,agenda'
+                    },
+                    eventLimit: true,
+                    eventColor: '#378006',
+                    events: events,
+                    eventClick: function (calEvent, jsEvent, view) {
+                        $('#myModal #eventTitle').text(calEvent.title);
+                        var $description = $('<div/>');
+                        $description.append($('<p/>').html('<b>Start Date: </b>' + calEvent.start.format("DD-MMM-YYYY")));
+                        if (calEvent.end != null) {
+                            $description.append($('<p/>').html('<b>End Date: </b>' + calEvent.end.format("DD-MMM-YYYY")));
+                        }
+                        $description.append($('<p>').html('<b>Start Time: </b>' + calEvent.startTime));
+                        $description.append($('<p>').html('<b>End Time: </b>' + calEvent.endTime));
+                        $description.append($('<p>').html('<b>Event: </b>' + calEvent.occasion));
+                        $description.append($('<p>').html('<b>Location: </b>' + calEvent.location));
+                        $description.append($('<p/>').html('<b>Description: </b>' + calEvent.description));
+                        $('#myModal #pDetails').empty().html($description);
+
+                        $('#myModal').modal();
+                    }
+                })
             }
-        </td>
-    </tr>
+        })
+    </script>
 }
-
-</table>

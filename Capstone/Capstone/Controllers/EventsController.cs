@@ -15,9 +15,19 @@ namespace Capstone.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Events
+
         public ActionResult Index()
-        {
+        {   
             return View(db.Events.ToList());
+        }
+
+        public JsonResult GetEvents()
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var events = db.Events.ToList();
+                return new JsonResult { Data = events, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
         }
 
         public ActionResult AttendanceIndex(int? id)
@@ -52,13 +62,13 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Date,Time,Location,Occasion,Description")] Event @event)
+        public ActionResult Create([Bind(Include = "ID,StartDate,EndDate,StartTime,EndTime,Occasion,Location,Description,ThemeColor,IsFullDay")] Event @event)
         {
             if (ModelState.IsValid)
             {
                 db.Events.Add(@event);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Events");
             }
 
             return View(@event);
@@ -84,7 +94,7 @@ namespace Capstone.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Date,Time,Location,Occasion,Description")] Event @event)
+        public ActionResult Edit([Bind(Include = "ID,StartDate,EndDate,StartTime,EndTime,Occasion,Location,Description,ThemeColor,IsFullDay")] Event @event)
         {
             if (ModelState.IsValid)
             {
