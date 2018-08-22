@@ -16,6 +16,10 @@
         padding-left: 25pt;
         padding-right: 25pt;
     }
+    .headerColor {
+        background-color: darkgreen;
+        color: white;
+    }
 </style>
 <h4><strong>
     @Html.ActionLink("Create New Schedule", "ScheduleCreate")
@@ -24,7 +28,7 @@
     </a>
 </strong></h4>
 <table class="table">
-    <tr>
+    <tr class="headerColor">
         @*<a href="~/Views/Availabilities/ScheduleIndex.cshtml">~/Views/Availabilities/ScheduleIndex.cshtml</a>*@
         <th>
             @Html.DisplayNameFor(model => model.Admin.Name)

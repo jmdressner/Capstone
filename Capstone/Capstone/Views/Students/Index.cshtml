@@ -4,27 +4,40 @@
     ViewBag.Title = "Index";
 }
 
+<style>
+    .border
+    {
+        border-style: solid;
+        border-width: thin;
+        border-color: black;
+    }
+    .headerColor {
+        background-color: darkgreen;
+        color: white;
+    }
+</style>
+
 <br />
 <div class="container" style="background-color: khaki">
     <br />
     <div class="row">
         <div class="col-md-2">
-            <img src="~/images/GPAClass.jpg" style="width:100%; height:auto;" />
+            <img src="~/images/GPAClass.jpg" class="border" style="width:100%; height:auto;"/>
         </div>
         <div class="col-md-2">
-            <img src="~/images/LaurenTable.jpg" style="width:100%; height:auto"/>
+            <img src="~/images/LaurenTable.jpg" class="border" style="width:100%; height:auto"/>
         </div>
         <div class="col-md-2">
-            <img src="~/images/MarciaTable.jpg" style="width:100%; height:auto"/>
+            <img src="~/images/MarciaTable.jpg" class="border" style="width:100%; height:auto"/>
         </div>
         <div class="col-md-2">
-            <img src="~/images/MustafaAhmed.jpg" style="width:100%; height:auto"/>
+            <img src="~/images/MustafaAhmed.jpg" class="border" style="width:100%; height:auto"/>
         </div>
         <div class="col-md-2">
-            <img src="~/images/TomClass.jpg" style="width:100%; height:auto"/>
+            <img src="~/images/TomClass.jpg" class="border" style="width:100%; height:auto"/>
         </div>
         <div class="col-md-2">
-            <img src="~/images/WendyClass.jpg" style="width:100%; height:auto"/>
+            <img src="~/images/WendyClass.jpg" class="border" style="width:100%; height:auto"/>
         </div>
     </div>
     <br />
@@ -49,7 +62,7 @@
             </div></center>
 
             <table class="table">
-                <tr>
+                <tr class="headerColor">
                     <th>
                         @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
                     </th>

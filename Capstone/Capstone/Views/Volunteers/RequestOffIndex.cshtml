@@ -4,6 +4,13 @@
     ViewBag.Title = "RequestOffIndex";
 }
 
+<style>
+    .headerColor {
+        background-color: darkgreen;
+        color: white;
+    }
+</style>
+
 <div style="background-color: khaki">
     <br />
     <center><h2><strong>Request Off</strong></h2></center>
@@ -18,7 +25,7 @@
     }
 </strong></h4>
 <table class="table">
-    <tr>
+    <tr class="headerColor">
         <th>
             @Html.DisplayNameFor(model => model.Volunteer.Name)
         </th>

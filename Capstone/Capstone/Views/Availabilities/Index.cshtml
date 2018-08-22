@@ -14,6 +14,10 @@
         padding-left: 360pt;
         padding-right: 360pt;
     }
+    .headerColor {
+        background-color: darkgreen;
+        color: white;
+    }
 </style>
 
 <h4><strong>
@@ -26,7 +30,7 @@
     </a>
 </strong></h4>
 <table class="table">
-    <tr>
+    <tr class="headerColor">
         @if (User.IsInRole("Admin"))
         {
             <th>

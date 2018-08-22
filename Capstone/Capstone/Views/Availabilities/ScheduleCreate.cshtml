@@ -9,6 +9,16 @@
         padding-left: 15pt;
         padding-right: 15pt;
     }
+    .colorWeek {
+        background-color: #D2FC8F;
+    }
+    .headerColor {
+        background-color: darkgreen;
+        color: white;
+    }
+    .rowColor {
+        background-color: ivory;
+    }
 </style>
 
 <div style="background-color: khaki">
@@ -27,7 +37,7 @@
      }
 </strong></h4>
 <table class="table">
-    <tr>
+    <tr class="headerColor">
         @if (User.IsInRole("Admin"))
         {
             <th>
@@ -46,35 +56,70 @@
         <th>
             @Html.DisplayNameFor(model => model.VolunteerStatus)
         </th>
-        <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        @if (User.IsInRole("Admin"))
+    @foreach (var item in Model)
+    {
+        if (User.IsInRole("Admin"))
         {
-            <td>
-                @Html.DisplayFor(modelItem => item.Admin.Name)
-            </td>
+            if (item.Week.Day == "Monday" || item.Week.Day == "Wednesday" || item.Week.Day == "Friday" || item.Week.Day == "Sunday")
+            {
+                <tr class="colorWeek">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Admin.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Volunteer.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week.Day)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Program.Service)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VolunteerStatus)
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr class="rowColor">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Admin.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Volunteer.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Week.Day)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Program.Service)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VolunteerStatus)
+                    </td>
+                </tr>
+            }
         }
-        <td>
-            @Html.DisplayFor(modelItem => item.Volunteer.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Week.Day)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Program.Service)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.VolunteerStatus)
-        </td>
-        @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>*@
-    </tr>
-}
+        if (User.IsInRole("Volunteer"))
+        {
+            <tr >
+                <td>
+                    @Html.DisplayFor(modelItem => item.Volunteer.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Week.Day)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Program.Service)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VolunteerStatus)
+                </td>
+            </tr>
+        }
+    }
 
 </table>

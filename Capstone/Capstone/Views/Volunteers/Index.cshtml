@@ -3,6 +3,12 @@
 @{
     ViewBag.Title = "Index";
 }
+<style>
+    .headerColor {
+        background-color: darkgreen;
+        color: white;
+    }
+</style>
 
 <div style="background-color: khaki">
     <br />
@@ -15,7 +21,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>*@
 <table class="table">
-    <tr>
+    <tr class="headerColor">
         <th>
             @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
